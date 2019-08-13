@@ -1,0 +1,407 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ecommerce_extras %}
+{% block meta %}
+    {% if products.has_previous %}
+    <link rel="prev" href="{% url 'products' %}?page={{ products.previous_page_number }}">
+    {% endif %}
+    {% if products.has_next %}
+    <link rel="next" href="{% url 'products' %}?page={{ products.next_page_number }}">
+    {% endif %}
+{% endblock meta %}
+{% block page_title %}Каталог автозапчастей{% endblock %}
+{% block content %}
+<!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Главная</a></li>
+                            <li>Каталог </li>
+                            <!--<li>shop list</li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+    <!--shop  area start-->
+    <div class="shop_area shop_reverse pt-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12">
+                   <!--sidebar widget start-->
+                     <aside class="sidebar_widget">
+                        <div class="widget_inner">
+                            <div class="widget_list widget_filter">
+                                <h2>Filter by price</h2>
+                                <form action="#">
+                                    <div id="slider-range"></div>
+                                    <button type="submit">Filter</button>
+                                    <input type="text" name="text" id="amount" />
+
+                                </form>
+                            </div>
+                            <div class="widget_list widget_categories">
+                                <h2>Категории</h2>
+                                <ul>
+                                    {% for cat in cat_list %}
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href=" {% url 'subcat' cat.slug %}">{{ cat.rus_name }}</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+
+                            <div class="widget_list widget_categories">
+                                <h2>Производитель</h2>
+
+
+                                <!--<ul>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="{% url 'fil' 'BMW' %}">BMW (6)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="?man2=Channel">Chanel(10)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#">Christian Dior (4)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#">hermes(10)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#">louis vuitton(8)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#">Tommy Hilfiger(7)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#">Versace(6)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                </ul>-->
+                            </div>
+                            <div class="widget_list widget_categories">
+                                <h2>Select By Color</h2>
+                                <ul>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#">Black (6)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#"> Blue (8)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#">Brown (10)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#"> Green (6)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#">Pink (4)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                       <a href="#">White (2)</a>
+                                       <span class="checkmark"></span>
+
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <a href="#">Yellow (3)</a>
+                                        <span class="checkmark"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single_banner">
+                            <a href="#"><img src="{% static 'img/bg/banner19.jpg' %}" alt=""></a>
+                        </div>
+                    </aside>
+                    <!--sidebar widget end-->
+                </div>
+                <div class="col-lg-9 col-md-12">
+                    <!--shop wrapper start-->
+                    <!--shop toolbar start-->
+                    <div class="shop_title">
+                        <h1>Интернет магазин запчастей</h1>
+                    </div>
+                    <div class="shop_toolbar_wrapper">
+                        <div class="shop_toolbar_btn">
+
+                            <button data-role="grid_3" type="button" class=" btn-grid-3" data-toggle="tooltip" title="3"></button>
+
+                            <button data-role="grid_4" type="button"  class=" btn-grid-4" data-toggle="tooltip" title="4"></button>
+
+                            <button data-role="grid_list" type="button"  class="active btn-list" data-toggle="tooltip" title="List"></button>
+                        </div>
+                        <div class=" niceselect_option">
+
+                            <form class="select_option" action="#">
+                                <select name="orderby" id="short">
+
+                                    <option selected value="1">Sort by average rating</option>
+                                    <option  value="2">Sort by popularity</option>
+                                    <option value="3">Sort by newness</option>
+                                    <option value="4">Sort by price: low to high</option>
+                                    <option value="5">Sort by price: high to low</option>
+                                    <option value="6">Product Name: Z</option>
+                                </select>
+                            </form>
+
+
+                        </div>
+                        <div class="page_amount">
+                            <p>Показано {{ products.start_index}}–{{ products.end_index }} из {{ products.paginator.count }} товаров Страница {{ products.number }} из {{ products.paginator.num_pages }}</p>
+                        </div>
+                    </div>
+                     <!--shop toolbar end-->
+
+                     <div class="row shop_wrapper grid_list">
+                        {% for product in products %}
+                        <div class="col-12 ">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    {% if not product.title|check_image_exist:product.id %}
+                                    <a class="primary_img" href="product-details.html"><img src="{% static 'img/prod_thumbs/pretty.jpg' %}" alt=""></a>
+                                    {% else %}
+                                    <a class="primary_img" href="product-details.html"><img src="{% static 'img/prod_thumbs/' %}{{ product.id }}" alt=""></a>
+                                    {% endif %}
+                                    <a class="secondary_img" href="product-details.html"><img src="{% static 'img/prod_imgs/girl.jpg' %}" alt=""></a>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                    </div>
+                                    <div class="label_product">
+                                        <!--<span class="label_new">New</span>-->
+                                        <span class="label_sale">-47%</span>
+                                    </div>
+                                </div>
+
+                                <div class="product_content grid_content">
+                                     <div class="content_inner">
+                                            <div class="product_name">
+                                                <h3><a href="product-details.html">{{ product.title}}</a></h3>
+                                            </div>
+                                            <div class="product_ratings">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$420.00</span>
+                                                <span class="current_price">$161.00</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="ion-bag"></i> add to cart</a></li>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li class="compare"><a href="#" title="compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div class="product_content list_content">
+                                    <div class="left_caption">
+                                       <div class="product_name">
+                                            <h3><a href="product-details.html">{{ product.title|upper }}</a></h3>
+                                           <h3><a href="product-details.html">{{ product.title|check_image_exist:product.id }}</a></h3>
+                                        </div>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">$420.00</span>
+                                            <span class="current_price">&#x20bd; {{ product.convert_price }}</span>
+                                        </div>
+                                        <div class="product_desc">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad, iure incidunt. Ab consequatur temporibus non eveniet inventore doloremque necessitatibus sed, ducimus quisquam, ad asperiores  </p>
+                                        </div>
+                                    </div>
+                                    <div class="right_caption">
+                                        <div class="product_name">
+                                            <h3><span>name:</span><a href="product-details.html">Запчасти</a></h3>
+                                        </div>
+                                        <div class="add_to_links">
+                                            <ul>
+                                                <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="ion-bag"></i> add to cart</a></li>
+                                                <li class="wishlist"><a href="#" title="Add to Wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></li>
+                                                <li class="compare"><a href="#" title="compare"><i class="ion-ios-settings-strong"></i> Add to Compare</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+
+                        <div class="col-12 ">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="product-details.html"><img src="{% static 'img/product/product8.jpg' %}" alt=""></a>
+                                    <a class="secondary_img" href="product-details.html"><img src="{% static 'img/product/product9.jpg' %}" alt=""></a>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                    </div>
+                                    <div class="label_product">
+                                        <span class="label_sale">-47%</span>
+                                    </div>
+                                </div>
+
+                                <div class="product_content grid_content">
+                                     <div class="content_inner">
+                                            <div class="product_name">
+                                                <h3><a href="product-details.html">Mug Today is a good day</a></h3>
+                                            </div>
+                                            <div class="product_ratings">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$420.00</span>
+                                                <span class="current_price">$160.00</span>
+                                            </div>
+                                            <div class="action_links">
+                                                <ul>
+                                                    <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="ion-bag"></i> add to cart</a></li>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li class="compare"><a href="#" title="compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                </div>
+
+
+                               <div class="product_content list_content">
+                                    <div class="left_caption">
+                                       <div class="product_name">
+                                            <h3><a href="product-details.html">Mug Today is a good day</a></h3>
+                                        </div>
+                                        <div class="product_ratings">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">$420.00</span>
+                                            <span class="current_price">$160.00</span>
+                                        </div>
+                                        <div class="product_desc">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad, iure incidunt. Ab consequatur temporibus non eveniet inventore doloremque necessitatibus sed, ducimus quisquam, ad asperiores  </p>
+                                        </div>
+                                    </div>
+                                    <div class="right_caption">
+                                        <div class="product_name">
+                                            <h3><span>name:</span><a href="product-details.html">Electronic</a></h3>
+                                        </div>
+                                        <div class="add_to_links">
+                                            <ul>
+                                                <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="ion-bag"></i> add to cart</a></li>
+                                                <li class="wishlist"><a href="#" title="Add to Wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></li>
+                                                <li class="compare"><a href="#" title="compare"><i class="ion-ios-settings-strong"></i> Add to Compare</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="shop_toolbar t_bottom">
+                        <div class="pagination">
+                            <ul>
+                                <a href="{% url 'products' %}"><li>1</li></a>
+
+                                {% if products.has_previous %}
+                                <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+                                {% else %}
+                                <li class="disabled"><span>&laquo;</span></li>
+                                {% endif %}
+
+                                {% for i in products.paginator.page_range %}
+                                {% if products.number == i %}
+                                <li class="current"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% elif i > products.number|add:'-5' and i < products.number|add:'5' %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                                {% endfor %}
+
+                                {% if products.paginator.num_pages > products.number|add:'4' %}
+                                <li><a href="?page={{ products.number|add:'5' }}">&hellip;</a></li>
+                                {% endif %}
+
+                                {% if products.has_next %}
+                                <li class="next"><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+                                <a href="?page={{ products.paginator.num_pages }}"><li>{{ products.paginator.num_pages }}</li></a>
+                                {% else %}
+                                <li class="disabled"><span>&raquo;</span></li>
+
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--shop toolbar end-->
+                    <!--shop wrapper end-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--shop  area end-->
+
+{% endblock content %}

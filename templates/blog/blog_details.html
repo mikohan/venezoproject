@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ecommerce_extras %}
+{% block page_title %}{{ blog.title }}{% endblock %}
+{% block page_description %}{{ blog.short_desc }}{% endblock %}
+{% block content %}
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li><a href="/blog/">{{ blog.category }}</a></li>
+                        <li>{{ blog.title|truncatechars:10}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!--blog body area start-->
+<div class="blog_details pt-30">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-9 col-md-12">
+                <!--blog grid area start-->
+                <div class="blog_details_wrapper">
+                    <div class="blog_thumb">
+                        <a href="#"><img src="assets/img/blog/blog9.jpg" alt=""></a>
+                    </div>
+                    <div class="blog_content">
+                        <h3 class="post_title">{{ blog.title }}</h3>
+                        <div class="post_meta">
+                            <span><i class="ion-person"></i> Автор </span>
+                            <span><a href="#">admin</a></span>
+                            <span>|</span>
+                            <span><i class="fa fa-calendar"
+                                     aria-hidden="true"></i>  Posted on  {{ blog.publish }}	</span>
+
+                        </div>
+                        <div class="post_content">
+                            {{ blog.description|safe }}
+                        </div>
+                        <!--<div class="entry_content">
+                            <div class="post_meta">
+                                <span>Теги: </span>
+                                <span><a href="#">, fashion</a></span>
+                                <span><a href="#">, t-shirt</a></span>
+                                <span><a href="#">, white</a></span>
+                            </div>
+
+                            <div class="social_sharing">
+                                <h3>share this post:</h3>
+                                <ul>
+                                    <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="#" title="google+"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" title="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="related_posts">
+                        <h3>Похожие статьи</h3>
+                        <div class="row">
+                            {% for rel in related %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single_related">
+                                    <div class="related_thumb">
+                                        <a href="{% url 'detailed' rel.slug %}"><img src="{{ rel.image.url }}" alt="{{ rel.title }}"></a>
+                                    </div>
+                                    <div class="related_content">
+                                        <h3><a href="{% url 'detailed' rel.slug %}">{{ rel.title }}</a></h3>
+                                        <span><i class="fa fa-calendar"
+                                                 aria-hidden="true"></i> {{ rel.publish }} </span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <!--<div class="comments_box">
+                        <h3>3 Comments </h3>
+                        <div class="comment_list">
+                            <div class="comment_thumb">
+                                <img src="assets/img/blog/comment3.png.jpg" alt="">
+                            </div>
+                            <div class="comment_content">
+                                <div class="comment_meta">
+                                    <h5><a href="#">Admin</a></h5>
+                                    <span>October 16, 2018 at 1:38 am</span>
+                                </div>
+                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure</p>
+                                <div class="comment_reply">
+                                    <a href="#">Reply</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="comment_list list_two">
+                            <div class="comment_thumb">
+                                <img src="assets/img/blog/comment3.png.jpg" alt="">
+                            </div>
+                            <div class="comment_content">
+                                <div class="comment_meta">
+                                    <h5><a href="#">Demo</a></h5>
+                                    <span>October 16, 2018 at 1:38 am</span>
+                                </div>
+                                <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur</p>
+                                <div class="comment_reply">
+                                    <a href="#">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment_list">
+                            <div class="comment_thumb">
+                                <img src="assets/img/blog/comment3.png.jpg" alt="">
+                            </div>
+                            <div class="comment_content">
+                                <div class="comment_meta">
+                                    <h5><a href="#">Admin</a></h5>
+                                    <span>October 16, 2018 at 1:38 am</span>
+                                </div>
+                                <p>Quisque orci nibh, porta vitae sagittis sit amet, vehicula vel mauris. Aenean at</p>
+                                <div class="comment_reply">
+                                    <a href="#">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comments_form">
+                        <h3>Leave a Reply </h3>
+                        <p>Your email address will not be published. Required fields are marked *</p>
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="review_comment">Comment </label>
+                                    <textarea name="comment" id="review_comment"></textarea>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <label for="author">Name</label>
+                                    <input id="author" type="text">
+
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <label for="email">Email </label>
+                                    <input id="email" type="text">
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <label for="website">Website </label>
+                                    <input id="website" type="text">
+                                </div>
+                            </div>
+                            <button class="button" type="submit">Post Comment</button>
+                        </form>
+                    </div>-->
+
+                </div>
+                <!--blog grid area start-->
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class="blog_sidebar_widget">
+                    <div class="widget_list widget_search">
+                        <h3>Search</h3>
+                        <form action="#">
+                            <input placeholder="Search..." type="text">
+                            <button type="submit">search</button>
+                        </form>
+                    </div>
+                    <div class="widget_list widget_tag">
+                        <h3>Теги продуктов</h3>
+                        <div class="tag_widget">
+                            <ul>
+                                {% for product in products %}
+                                <li><a href="#">{{ product.name|truncatechars:12 }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget_list widget_post">
+                        <h3>Недавние посты</h3>
+                        {% for recent in resents %}
+                        <div class="post_wrapper">
+                            <div class="post_thumb">
+                                <a href="{% url 'detailed' recent.slug %}"><img src="{{ recent.image.url }}" alt=""></a>
+                            </div>
+                            <div class="post_info">
+                                <h3><a href="{% url 'detailed' recent.slug %}">{{ recent.title|truncatechars:15 }}</a></h3>
+                                <span>{{ recent.publish }} </span>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="widget_list widget_categories">
+                        <h3>Categories</h3>
+                        <ul>
+                            {% for cat in cats %}
+                            <li><a href="{% url 'last' cat.slug %}">{{ cat.rus_name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--blog section area end-->
+{% endblock %}

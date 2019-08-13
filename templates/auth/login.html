@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.html">Главная</a></li>
+                            <li>Мой аккаунт</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+
+    <!-- customer login start -->
+    <div class="customer_login">
+        <div class="container">
+            <div class="row">
+               <!--login area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form">
+                        <h2>Войти</h2>
+                        <form action="" method="post">{% csrf_token %}
+                            {{ form_login }}
+                            <!--<p>
+                                <label>Username or email <span>*</span></label>
+                                <input type="text">
+                             </p>
+                             <p>
+                                <label>Passwords <span>*</span></label>
+                                <input type="password">
+                             </p>-->
+                            <div class="login_submit mt-5">
+                               <a href="#">Забыли пароль?</a>
+                                <label for="remember">
+                                    <input id="remember" type="checkbox">
+                                    Запомнить меня
+                                </label>
+                                <button type="submit">Войти</button>
+                            </div>
+                        </form>
+                     </div>
+                </div>
+                <!--login area start-->
+
+                <!--register area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form register">
+                        <h2>Зарегистрироваться</h2>
+                        <form action="" method="post">{% csrf_token %}
+                            {{ form_register }}
+                            <!--<p>
+                                <label>Email address  <span>*</span></label>
+                                <input type="text">
+                             </p>
+                             <p>
+                                <label>Passwords <span>*</span></label>
+                                <input type="password">
+                             </p>-->
+                            <div class="login_submit mt-5">
+                                <button type="submit">Зарегистрироваться</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--register area end-->
+            </div>
+        </div>
+    </div>
+    <!-- customer login end -->
+{% endblock content %}

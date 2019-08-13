@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ecommerce_extras %}
+{% block meta %}
+{% if products.has_previous %}
+<link rel="prev" href="{% url 'products' %}?page={{ products.previous_page_number }}">
+{% endif %}
+{% if products.has_next %}
+<link rel="next" href="{% url 'products' %}?page={{ products.next_page_number }}">
+{% endif %}
+{% endblock meta %}
+{% block page_title %}Каталог автозапчастей{% endblock %}
+{% block content %}
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="{% url 'home' %}">Главная</a></li>
+                        <li><a href="{% url 'products' %}" >Каталог</a></li>
+                        <li><a href="{% url 'subsubcat' old_slug %}">{{ old_name }}</a> </li>
+                        <li>{{ rus_name }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!--shop  area start-->
+<div class="shop_area shop_reverse pt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12">
+                <!--sidebar widget start-->
+                <aside class="sidebar_widget">
+                    <div class="widget_inner">
+                        <div class="widget_list widget_filter text-center">
+                            <button class="widget_filter_button" type="submit" value="apply filter"
+                                    onclick="return onFacetChangeApplied();">Фильтр
+                            </button>
+                        </div>
+                        {% if facets.fields.category %}
+                        <div class="widget_list widget_categories" >
+                            <h2>Категория</h2>
+                            <div class="widget_list widget_categories" style="max-height:600px; overflow-y: scroll";>
+                            <ul>
+                                {% for category in facets.fields.category %}
+                                {% if category.1 != 0 %}
+                                <li>
+                                    <input class="facet" id="{{category.0|cut:" "}}" type="checkbox" name="category" value="{{ category.0 }}" data-toggle="toggle" /><span
+                                        class="pl-5"> {{ category.0|split_facet_first }} ({{ category.1 }}) </span><span class="checkmark"></span>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                            </ul>
+                        </div>
+                        </div>
+                        {% if facets.fields.car %}
+                        <div class="widget_list widget_categories">
+                            <h2>Машина</h2>
+                            <ul>
+                                {% for car in facets.fields.car %}
+                                {% if car.1 != 0 %}
+                                <li>
+                                    <input class="facet" id="{{car.0|cut:" "}}" type="checkbox" name="car" value="{{ car.0 }}" data-toggle="toggle" /><span
+                                        class="pl-5"> {{ car.0 }} ({{ car.1 }})</span><span class="checkmark"></span>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                            </ul>
+                        </div>
+                        {% if facets.fields.brand %}
+                        <div class="widget_list widget_categories">
+                            <h2>Бренд</h2>
+                            <ul>
+                                {% for brand in facets.fields.brand %}
+                                {% if brand.1 != 0 %}
+                                <li>
+                                    <input class="facet" id="{{brand.0|cut:" "}}" type="checkbox" name="brand" value="{{  brand.0 }}" data-toggle="toggle" /><span class="pl-5"> {{ brand.0 }} ({{ brand.1 }})</span><span class="checkmark"></span>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="widget_list widget_categories">
+                            {% if facets.fields.cond %}
+                            <h2>Состояние</h2>
+                            <ul>
+                                {% for cond in facets.fields.cond %}
+                                {% if cond.1 != 0 %}
+
+                                <li>
+                                    <input class="facet" id="{{cond.0|cut:" "}}" type="checkbox" name="cond" value="{{ cond.0 }}" data-toggle="toggle" /><span class="pl-5"> {{ cond.0 }} ({{ cond.1 }})</span><span class="checkmark"></span>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                        {% if facets.fields.fuel %}
+                        <div class="widget_list widget_categories">
+                            <h2>Тип</h2>
+                            <ul>
+                                {% for fuel in facets.fields.fuel %}
+                                {% if fuel.1 != 0 %}
+                                <li>
+                                    <input class="facet" id="{{ fuel.0|cut:" "}}" type="checkbox" name="fuel" value="{{ fuel.0 }}" data-toggle="toggle" /><span class="pl-5"> {{ fuel.0 }} ({{ fuel.1 }})</span><span class="checkmark"></span>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                        {% if facets.fields.value %}
+                        <div class="widget_list widget_categories">
+                            <h2>Обьем</h2>
+                            <ul>
+                                {% for value in facets.fields.value %}
+                                {% if value.1 != 0 %}
+                                <li>
+                                    <input class="facet" id="{{ value.0|cut:" "}}" type="checkbox" name="value" value="{{ value.0 }}" data-toggle="toggle" /><span class="pl-5"> {{ value.0 }} ({{ value.1 }})</span><span class="checkmark"></span>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="widget_list widget_filter text-center">
+                            <button class="widget_filter_button" type="submit" value="apply filter"
+                                    onclick="return onFacetChangeApplied();">Показать
+                            </button>
+                        </div>
+                        <!--<div class="widget_list widget_filter">
+                            <h2>Фильтр по цене</h2>
+                            <form action="#">
+                                <input type="text" name="text" id="amount"/>
+                                <div id="slider-range"></div>
+                                <button type="submit">Показать</button>
+                            </form>
+                        </div>-->
+
+                    </div>
+                    <div class="single_banner">
+                        <a href="#"><img src="{% static 'img/bg/banner19.jpg' %}" alt=""></a>
+                    </div>
+                </aside>
+                <!--sidebar widget end-->
+            </div>
+            <div class="col-lg-9 col-md-12">
+                <!--shop wrapper start-->
+                <!--shop toolbar start-->
+                <div class="shop_title">
+                    <h1>Категория {{ rus_name }}</h1>
+                </div>
+                <div class="shop_toolbar_wrapper">
+                    {% include 'shop/snippets/sorting_snippet.html' %}
+                    <div class="page_amount">
+                        <p>Показано {{ page_obj.start_index }} - {{ page_obj.end_index }} из {{ page_obj.paginator.count }} на стр {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</p>
+                    </div>
+                </div>
+                <!--shop toolbar end-->
+                <div class="row shop_wrapper grid_list">
+                    {% if page_obj.object_list %}
+                    {% for product in page_obj.object_list %}
+                    <div class="col-12 ">
+                        <div class="single_product">
+                            <div class="product_thumb">
+                                {# if not product.title|check_image_exist:product.pk #}
+                                <!--<a class="primary_img" href="{% url 'detailed_id' product.object.id %}"><img
+                                        src="{% static 'img/prod_thumbs/pretty.jpg' %}" alt=""></a>-->
+                                {# else #}
+                                <a class="primary_img" href="{% url 'detailed_id' product.object.id %}"><img
+                                        src="{{ CDN_SERVER }}/media/{{ product.pk }}/300/0.webp" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';"></a>
+                                {# endif #}
+                                <!--<a class="secondary_img" href="product-details.html"><img
+                                        src="{% static 'img/prod_imgs/girl.jpg' %}" alt=""></a>-->
+                                <div class="quick_button">
+                                    <a href="#" data-toggle="modal" data-target="#modal_box_{{ product.pk }}" title="quick view"> <i
+                                            class="ion-eye"></i></a>
+                                </div>
+                                <div class="label_product">
+                                    <!--<span class="label_new">New</span>-->
+                                    <span class="label_sale">-{{ view.admin_settings }}%</span>
+                                </div>
+                            </div>
+                            <div class="product_content grid_content">
+                                <div class="content_inner">
+                                    <div class="product_name">
+                                        <h3><a href="{% url 'detailed_id' product.object.id %}">{{ product.object.name|capfirst }}</a></h3>
+                                    </div>
+                                    <div class="price_box">
+                                        <span class="old_price">&#x20bd; {{ product.object.price }}</span>
+                                        <span class="current_price">&#x20bd; {{ product.object.price }}</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="add_to_cart">{% include "shop/snippets/list_cart.html"  with form=form product=product cart=cart %}</li>
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                    class="fa fa-heart-o"></i></a></li>
+                                            <li class="compare"><a href="#" title="compare"><i
+                                                    class="ion-ios-settings-strong"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_content list_content">
+                                <div class="left_caption">
+                                    <div class="product_name">
+                                        <h3><a href="{% url 'detailed_id' product.object.id %}">{{ product.name|upper }}</a></h3>
+
+                                    </div>
+
+                                    <div class="price_box">
+                                        <span class="old_price">&#x20bd; {{ product.object.price }}</span>
+                                        <span class="current_price">&#x20bd; {{ product.object.price }}</span>
+                                    </div>
+                                    <div class="product_desc">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad, iure
+                                            incidunt. Ab consequatur temporibus non eveniet inventore doloremque
+                                            necessitatibus sed, ducimus quisquam, ad asperiores </p>
+                                    </div>
+                                </div>
+                                <div class="right_caption">
+                                    <div class="product_name">
+                                        <h3><span>Машина:</span><a href="product-details.html">{{ product.car }}</a></h3>
+                                    </div>
+                                    <div class="add_to_links">
+                                        <ul>
+                                            {% include "shop/snippets/list_cart.html"  with form=form product=product cart=cart %}
+                                            <li class="wishlist"><a href="#" title="Add to Wishlist"><i
+                                                    class="fa fa-heart-o"></i> Добавить в блокнот</a></li>
+                                            <li class="compare"><a href="#" title="compare"><i
+                                                    class="ion-ios-settings-strong"></i> Добавить к сравнению</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- modal area start-->
+                        {% include 'shop/snippets/modal.html' %}
+
+                    <!-- modal area end-->
+
+
+                    {% endfor %}
+                </div>
+                <div class="shop_toolbar t_bottom">
+                    <div class="pagination">
+                        {% if is_paginated %}
+                        <ul>
+                            <li><a href="?{% param_replace page=1 %}">1</a></li>
+                            {% if page_obj.has_previous %}
+                            <li><a href="?{% param_replace page=page_obj.previous_page_number %}">&laquo;</a></li>
+                            {% else %}
+                            <li class="disabled"><span>&laquo;</span></li>
+                            {% endif %}
+
+                            {% for i in paginator.page_range %}
+                            {% if page_obj.number == i %}
+                            <li class="current"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}
+                            <li><a href="?{% param_replace page=i %}">{{ i }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+                            <li><a href="?{% param_replace page=page_obj.number|add:'5' %}">&hellip;</a></li>
+                            {% endif %}
+
+                            {% if page_obj.has_next %}
+                            <li class="next"><a href="?{% param_replace page=page_obj.next_page_number %}">&raquo;</a>
+                            </li>
+                            <li><a href="?{% param_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a></li>
+                            {% else %}
+                            <li class="disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                {% else %}
+                <p> Sorry, no result found for the search term <strong>{{query}} </strong></p>
+                {% endif %}
+                <!--shop toolbar end-->
+                <!--shop wrapper end-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--shop  area end-->
+{% endblock content %}

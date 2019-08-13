@@ -1,0 +1,20 @@
+<form method="post" action="{{ action_url }}">{% csrf_token %}
+
+    {% if next_url %}
+    <input type="hidden" name="next" value="{{ next_url }}">
+    {% endif %}
+
+    {% if address_type %}
+    <input type="hidden" name="address_type" value="{{ address_type }}">
+    {% endif %}
+
+
+    {% for address in address_qs %}
+    <label for="address-{{ address.pk }}">
+        <input id="address-{{ address.pk }}" type="radio" name="shipping_address" value="{{ address.pk }}">
+        <strong>{{ address.city }}, {{ address.address_line }}</strong>
+    </label>
+
+    {% endfor %}
+    <button class="ml-4" type="submit">Выбрать</button>
+</form>

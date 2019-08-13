@@ -1,0 +1,43 @@
+<div class="shop_toolbar_btn">
+    <button data-role="grid_3" type="button" class=" btn-grid-3" data-toggle="tooltip"
+            title="3"></button>
+    <button data-role="grid_4" type="button" class=" btn-grid-4" data-toggle="tooltip"
+            title="4"></button>
+    <button data-role="grid_list" type="button" class="active btn-list" data-toggle="tooltip"
+            title="List"></button>
+</div>
+<div class="no-class">
+    <form action="" method="get">
+        <input type="hidden" name="q" value="{{ request.GET.q }}">
+        {% if request.GET.car %}
+        <input type="hidden" name="car" value="{{ request.GET.car }}">
+        {% endif %}
+        {% if request.GET.brand %}
+        <input type="hidden" name="brand" value="{{ request.GET.brand }}">
+        {% endif %}
+        {% if request.GET.cond %}
+        <input type="hidden" name="cond" value="{{ request.GET.cond }}">
+        {% endif %}
+        {% if request.GET.fuel %}
+        <input type="hidden" name="fuel" value="{{ request.GET.fuel }}">
+        {% endif %}
+        {% if request.GET.category %}
+        <input type="hidden" name="category" value="{{ request.GET.category }}">
+        {% endif %}
+        {% if request.GET.page %}
+        <input type="hidden" name="page" value="{{ request.GET.page }}">
+        {% endif %}
+        <select class="select_option_sort" name="order_by" id="short" onchange="this.form.submit()">
+            {% if request.GET.order_by == "1" %}
+            <option selected value="1">По цене дешевле</option>
+            <option value="2">По цене дороже</option>
+            {% elif request.GET.order_by == "2" %}
+            <option value="1">По цене дешевле</option>
+            <option selected value="2">По цене дороже</option>
+            {% else %}
+            <option value="1">По цене дешевле</option>
+            <option value="2">По цене дороже</option>
+            {% endif %}
+        </select>
+    </form>
+</div>

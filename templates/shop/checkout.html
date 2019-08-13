@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ecommerce_extras %}
+{% block page_title %}Страница оформления заказа - PartsHub{% endblock %}
+{% block content %}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="{% url 'home' }">Главная</a></li>
+                        <li>Оформить заказ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+
+<!--Checkout page section-->
+<div class="Checkout_section pt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% if not billing_profile %}
+                <div class="user-actions">
+
+                    <div class="row">
+                            <div class="col-6">
+                                <h3 class="order_h">Уже есть аккаунт - Войти</h3>
+                                <div class="account_form">
+                                    {% include 'accounts/snippets/form.html' with form=login_form next_url=request.build_absolute_uri %}
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="order_h">Продолжить без регистрации</h3>
+                                <div class="account_form">
+                                    {% url 'guest_register' as guest_register_url %}
+                                    {% include 'accounts/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_register_url %}
+                            </div>
+                    </div>
+                    <div id="checkout_login" class="collapse" data-parent="#accordion">
+                        <div class="checkout_info">
+                            <p>If you have shopped with us before, please enter your details in the boxes below. If you
+                                are a new customer please proceed to the Billing & Shipping section.</p>
+                                <div class="form_group">
+                                    <label>Username or email <span>*</span></label>
+                                    <input type="text">
+                                </div>
+                                <div class="form_group">
+                                    <label>Password <span>*</span></label>
+                                    <input type="text">
+                                </div>
+                                <div class="form_group group_3 ">
+                                    <button type="submit">Login</button>
+                                    <label for="remember_box">
+                                        <input id="remember_box" type="checkbox">
+                                        <span> Remember me </span>
+                                    </label>
+                                </div>
+                                <a href="#">Lost your password?</a>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="user-actions">
+                    <h3>
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        Уже делали покупки?
+                        <a class="Returning" href="#" data-toggle="collapse" data-target="#checkout_coupon"
+                           aria-expanded="true">Кликните здесь, чтобы выбрать адрес доставки</a>
+
+                    </h3>
+                    <div id="checkout_coupon" class="collapse" data-parent="#accordion">
+                        <div class="checkout_info">
+                            {% if address_qs.exists %}
+                            <div>
+                                {% url 'checkout_address_reuse' as checkout_address_reuse %}
+                                {% include 'addresses/snippets/checkout_form.html' with address_qs=address_qs next_url=request.build_absolute_uri address_type='shipping' action_url=checkout_address_reuse%}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="checkout_form">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <h3>Ваш заказ</h3>
+                    <div class="order_table table-responsive">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Товары</th>
+                                <th>Сумма</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for product in object.cart.products.all %}
+                            <tr>
+                                <td>{{ product.name }}</td>
+                                <td>&#x20bd;  {{ product.price }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>Товаров на сумму</th>
+                                <td>&#x20bd; {{ object.cart.total }}</td>
+                            </tr>
+                            <tr>
+                                <th>Доставка</th>
+                                <td><strong>&#x20bd; {{ object.shipping_total }}</strong></td>
+                            </tr>
+                            <tr class="order_total">
+                                <th>Заказ на сумму</th>
+                                <td><strong>&#x20bd; {{ object.total }}</strong></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    {% if not object.shipping_address %}
+                    <h3>Адрес доставки</h3>
+                    <div class="row">
+
+                        {% url 'checkout_address_create' as checkout_address_create %}
+                        {% include 'addresses/snippets/form.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='shipping' %}
+                    </div>
+                </div>
+
+                {% else %}
+                <h2> Отправить заказ</h2>
+                    <form action="" method="POST">{% csrf_token %}
+                        <div class="order_button mt-3 mb-3">
+                            <button type="submit">Завершить</button>
+                        </div>
+                        <h4>Отправьте заказ и менеджер свяжется с Вами в рабочее время для уточнения деталей.</h4>
+                    </form>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+            {% endif %}
+    </div>
+</div>
+<!--Checkout page section end-->
+{% endblock %}

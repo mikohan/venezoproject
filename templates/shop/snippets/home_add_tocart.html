@@ -1,0 +1,24 @@
+<form class="form-product-ajax-home" method="POST" action="{% url 'carts:update' %}" >{% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ product.id }}">
+    {% if in_cart %}
+        <td class="product_remove"><button style="background: none; padding: 0px;  border: none; font-size:20px; color:#fd6602;" class="button" type="submit"><i class="fa fa-trash-o"></i></button></td>
+    {% else %}
+         <!--<label>Количество</label>
+    <input min="0" max="100" value="1" type="number">-->
+    <span class="submit-span">
+        {% if product in cart.products.all %}
+        <ul>
+            <li class="add_to_cart"><button type="submit" title="add to cart"><i class="ion-bag"></i> в корзину</button></li>
+            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a></li>
+            <li class="compare"><a href="#" title="compare"><i class="ion-ios-settings-strong"></i></a></li>
+        </ul>
+        {% else %}
+        <ul>
+            <li class="add_to_cart"><button type="submit" title="add to cart" ><i class="ion-bag"></i> в корзину</button></li>
+            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o"></i></a></li>
+            <li class="compare"><a href="#" title="compare"><i class="ion-ios-settings-strong"></i></a></li>
+        </ul>
+        {% endif %}
+    </span>
+    {% endif %}
+</form>

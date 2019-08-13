@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ecommerce_extras %}
+{% block page_title %}Корзина{% endblock %}
+{% block content %}
+<div class="breadcrumbs_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="{% url 'home' %}">Главная</a></li>
+                            <li>Корзина</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+
+     <!--shopping cart area start -->
+    <div class="shopping_cart_area pt-30">
+        <div class="container">
+            {% if cart.products.exists %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="cart_page table-responsive">
+                                <table class="cart-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product_remove">Удалить</th>
+                                            <th class="product_thumb">Картинка</th>
+                                            <th class="product_name">Название</th>
+                                            <th class="product-price">Цена</th><!--
+                                            <th class="product_quantity">Количество</th>-->
+                                            <th class="product_total">Всего</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="cart-body">
+                                        {% for product in cart.products.all %}
+                                            <tr class="cart-products">
+                                                <td class="product_remove">{% include "shop/snippets/remove_products.html"  with form=form product_id=product.id %}</td>
+                                               <!--<td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>-->
+                                                <td class="product_thumb"><a href="{% url 'detailed_id' product.pk %}"><img src="{% static 'img/prod_thumbs/' %}{{ product.pk }}.webp" alt=""></a></td>
+                                                <td class="product_name"><a href="{% url 'detailed_id' product.pk %}">{{ product.name|truncatechars:40 }}</a></td>
+                                                <td class="product-price">&#x20bd; {{ product.price }}</td><!--
+                                                <td class="product_quantity"><label>Количество</label> <input min="0" max="100" value="1" type="number"></td>
+                                                --><td class="product_total">&#x20bd; {{ product.price }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <div class="cart-item-remove-form" style="display:none">
+                                    {% include "shop/snippets/remove_products.html" %}
+                                </div>
+
+                            </div>
+                            <!--<div class="cart_submit">
+                                <button type="submit">обновить корзину</button>
+                            </div>-->
+                        </div>
+                     </div>
+                 </div>
+                 <!--coupon code area start-->
+                <div class="coupon_area">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="coupon_code left">
+                                <h3>Купон</h3>
+                                <div class="coupon_inner">
+                                    <p>Введите купон на скидку.</p>
+                                    <input placeholder="Coupon code" type="text" disabled>
+                                    <button type="submit" readonly>Активировать купон</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="coupon_code right cart-totals">
+                                <h3>Сумма корзины</h3>
+                                <div class="coupon_inner">
+                                   <div class="cart_subtotal">
+                                       <p>Цена товаров</p>
+                                       <p class="cart_amount">&#x20bd; <span class="cart-subtotal"> {{ cart.subtotal }}</span></p>
+                                   </div>
+                                   <div class="cart_subtotal ">
+                                       <p>Доставка</p>
+                                       <p class="cart_amount"><span>Стоимость доставки:</span>&#x20bd; 0</p>
+                                   </div>
+                                   <a href="{% url 'delivery' %}">Условия доставки здесь</a>
+
+                                   <div class="cart_subtotal">
+                                       <p>Итого</p>
+                                       <p class="cart_amount">&#x20bd; <span class="cart-total"> {{ cart.total }}</span></p>
+                                   </div>
+                                   <div class="checkout_btn">
+                                       <a href="{% url 'cart:checkout' %}">Оформить заказ</a>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--coupon code area end-->
+            {% else %}
+            <div class="p-4">
+                <h3>Корзина пуста</h3>
+                <h4>Воспользуйтесь поиском, чтобы найти всё что нужно.</h4>
+                <h4>Если в корзине были товары – войдите, чтобы посмотреть список.</h4>
+
+            </div>
+            {% endif %}
+        </div>
+    </div>
+     <!--shopping cart area end -->
+{% endblock %}

@@ -1,0 +1,13 @@
+{{ object.name }}
+{{ object.price }}
+{{ object.cond }}
+{{ object.brand }}
+{{ object.car }}
+{{ object.car_model }}
+{{ object.value }}
+{{ object.weight }}
+{{ object.cat_n }}
+{{ object.color }}
+{{ object.stan }}
+{{ object.category.id }}
+

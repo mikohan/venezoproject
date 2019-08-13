@@ -1,0 +1,16 @@
+<form class="form-product-ajax" method="POST" action="{% url 'carts:update' %}" >{% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ product.id }}">
+    {% if in_cart %}
+        <td class="product_remove"><button style="background: none; padding: 0px;  border: none; font-size:20px; color:#fd6602;" class="button" type="submit"><i class="fa fa-trash-o"></i></button></td>
+    {% else %}
+         <!--<label>Количество</label>
+    <input min="0" max="100" value="1" type="number">-->
+    <span class="submit-span">
+        {% if product in cart.products.all %}
+        <button id="white_button2" class="button" type="submit">Убрать из корзины</button>
+        {% else %}
+        <button id="white_button" class="button" type="submit">В корзину</button>
+        {% endif %}
+    </span>
+    {% endif %}
+</form>

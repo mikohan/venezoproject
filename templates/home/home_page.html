@@ -1,0 +1,933 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ecommerce_extras %}
+{% block page_title %}Запчасти Б/У и новые из Европы{% endblock %}
+{% block page_description %} Запчасти для автомобилей, грузовиков, спецтехники, мотоциклов, тракторов, комбайнов.{% endblock %}
+{% block secondheader %}
+<!--header bottom satrt-->
+        <div class="header_bottom sticky-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="categories_menu_inner">
+
+                            <div class="categories_menu">
+                               <div class="category_toggle">
+                                    <a href="#">categories<i class="fa fa-angle-down"></i></a>
+                               </div>
+                                <nav class="categories_menu_toggle">
+                                    <ul>
+
+                                        <li class="menu_item_children"><a href="shop.html">
+                                               <img src="{% static 'img/icon/menu1.png' %}" alt="">
+                                                <span> Легковые и Грузвоые </span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_item_children"><a href="shop.html">
+                                               <img src="{% static 'img/icon/menu2.png' %}" alt="">
+                                                <span> Спецтехника </span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_item_children"><a href="shop.html">
+                                               <img src="{% static 'img/icon/menu3.png' %}" alt="">
+                                                <span> Мотоциклы </span>
+                                           </a>
+                                        </li>
+                                        <li><a href="shop.html">
+                                                <img src="{% static 'img/icon/menu4.png' %}" alt="">
+                                                <span> Трактора </span>
+                                            </a>
+                                        </li>
+                                        <li><a href="shop.html">
+                                               <img src="{% static 'img/icon/menu5.png' %}" alt="">
+                                                <span> Комбайны</span>
+                                           </a>
+                                        </li>
+                                        <li><a href="shop.html">
+                                                <img src="{% static 'img/icon/menu6.png' %}" alt="">
+                                                <span> Двигатели</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--header bottom end-->
+{% endblock secondheader %}
+
+
+
+
+{% block content %}
+
+<!--slider banner area start-->
+    <div class="slider_banner_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-12">
+                     <div class="slider_area slider_two owl-carousel">
+                        <div class="single_slider" data-bgimg="{% static 'img/main_page/car_parts.jpg' %}">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <div class="slider_content slider_c_two">
+                                        <h1>Запчасти </h1>
+                                        <h2>Для легковых машин</h2>
+                                        <p>Новые и б/у запчасти для легковых автомобилей</p>
+                                        <a class="button" href="{% url 'products' %}">Перейти в категорию</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="single_slider" data-bgimg="{% static 'img/main_page/tracktor_parts_no_text.jpg' %}">
+                            <div class="row align-items-center">
+                                <div class="col-12">
+                                    <div class="slider_content slider_c_two">
+                                        <h1>Запчасти</h1>
+                                        <H2>Для Спецтехники</H2>
+                                        <p>Сельскохозяйственная, Горнодобывающая, Строительная, Спецтехника  </p>
+                                        <a class="button" href="{% url 'products' %}">Перейти в категорию</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <!--banner area start-->
+                    <div class="banner_area banner_right">
+                        <div class="single_banner">
+                            <a href="{% url 'products' %}"><img src="{% static 'img/main_page/yamaha_263x208.jpg' %}" alt="Запчасти к мотоциклам"></a>
+                        </div>
+                        <div class="single_banner">
+                            <a href="/products/last/komplektnye-dvigateli-xsscg/"><img src="{% static 'img/main_page/used_engine263x208.jpg' %}" alt="Запчасти БУ для легковых автомобилей и грузовиков"></a>
+                        </div>
+                    </div>
+                    <!--banner area end-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--header tags area-->
+    <div class="header_tags tags_two">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul> <li><span>ТОП ТЕГОВ:</span></li>
+                        <li><a href="#">Electronic Cigarettes</a></li>
+                        <li><a href="#">iPad Mini Cases</a></li>
+                        <li><a href="#">Audio Speaker</a></li>
+                        <li><a href="#">Audio Speaker</a></li>
+                        <li><a href="#">Tablets</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Mornitors</a></li>
+                        <li><a href="#">Cameras</a></li>
+                        <li><a href="#">Watchs</a></li>
+                        <li><a href="#">Audio Speaker</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--header tags end-->
+    <!--slider banner area end-->
+
+    <!--banner area start-->
+    <div class="banner_area banner_two">
+       <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="single_banner">
+                        <a href="#"><img src="{% static 'img/main_page/truck_parts_543x168.jpg' %}" alt="Запчасти для грузовых автомобилей"></a></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="single_banner b_right">
+                        <a href="#"><img src="{% static 'img/main_page/special_machines.jpg' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--banner area end-->
+
+    <!--home product wrapper star-->
+    <section class="home_product_wrapper home_two">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <div class="home_left_sidebar">
+                         <!--countdown product area start-->
+                        <div class="countdown_product default_product">
+                            <div class="section_title">
+                                <h2> Товар дня</h2>
+                                <div class="icone_img">
+                                    <img src="{% static 'img/icon/product_icone.png' %}" alt="Товар дня">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="product_carousel product_column1 owl-carousel">
+                                    {% for best in bestseller %}
+                                    <div class="col-lg-3">
+                                        <div class="single_product">
+                                            <div class="product_thumb">
+                                                <a class="primary_img" href="{% url 'detailed_id' best.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ best.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ best.product_id.name }}"></a>
+                                                <div class="quick_button">
+                                                    <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                </div>
+                                                <div class="label_product">
+                                                    <span class="label_sale">-47%</span>
+                                                </div>
+                                            </div>
+                                            <div class="product_content">
+                                                <div class="content_inner">
+                                                    <div class="product_name">
+                                                        <h3><a href="{% url 'detailed_id' best.product_id %}">{{ best.product_id.name }}</a></h3>
+                                                    </div>
+
+                                                    <div class="price_box">
+                                                        <span class="old_price">&#x20bd; {{ best.product_id.price }}</span>
+                                                        <span class="current_price">&#x20bd; {{ best.product_id.price }}</span>
+                                                    </div>
+                                                    <div class="action_links">
+                                                        {% include "shop/snippets/home_add_tocart.html"  with form=form product=best.product_id cart=cart %}
+                                                    </div>
+                                                </div>
+
+                                                <div class="product_timing">
+                                                   <h3>Ends in</h3>
+                                                    <div data-countdown="2020/12/15"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--countdown product area end-->
+
+                        <!--small product area start-->
+                        <div class="small_product_area">
+                            <div class="section_title">
+                                <h2>Новые поступления</h2>
+                                <div class="icone_img">
+                                    <img src="{% static 'img/icon/product_icone6.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="small_product_items small_product_active">
+                                {% for new in new_arrivals %}
+                                <div class="single_product_items">
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="{% url 'detailed_id' new.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ new.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ new.product_id.name }}"></a>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h3><a href="{% url 'detailed_id' new.product_id %}">{{ new.product_id.name }}</a></h3>
+                                        </div>
+
+                                        <div class="price_box">
+                                            <span class="old_price">&#x20bd; {{ new.product_id.price }}</span>
+                                            <span class="current_price">&#x20bd; {{ new.product_id.price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!--small product area end-->
+
+                        <!--blog area start-->
+                        <div class="blog_area blog_two">
+                            <div class="section_title">
+                                <h2>Последние новости</h2>
+                                <div class="icone_img">
+                                    <img src="{% static 'img/icon/icon-blog.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="blog_container blog_column1 owl-carousel">
+                                {% for blog in blogs %}
+                                <div class="single_blog">
+                                    <div class="blog_thumb">
+                                        <a href="{% url 'detailed' blog.slug %}"><img src="{{ blog.image.url }}" alt="{{ blog.title }}"></a>
+                                        <div class="blog_date">
+                                            <span>{{ blog.publish|date:"d" }}</span>
+                                            <span>{{ blog.publish|date:"M" }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="blog_content">
+                                        <h3><a href="{% url 'detailed' blog.slug %}">{{ blog.title }}</a></h3>
+                                        <span class="author"><i class="fa fa-user-circle"></i> Автор : <a href="#">admin</a></span>
+                                        <div class="blog_desc">
+                                            <p>{{ blog.short_desc }}</p>
+                                        </div>
+                                        <div class="read_more">
+                                            <a href="{% url 'detailed' blog.slug %}">Читать...</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!--blog area end-->
+
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <div class="home_right_sidebar">
+                        <!--product area start-->
+                        <div class="product_area product_two default_product">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="section_title">
+                                        <h2>Легковые и Грузовые запчасти </h2>
+                                        <div class="icone_img">
+                                            <img src="{% static 'img/icon/product_icone2.png' %}" alt="">
+                                        </div>
+                                        <ul class="product_tab_button nav" role="tablist">
+                                            <li>
+                                                <a class="active" data-toggle="tab" href="#desktop2" role="tab" aria-controls="desktop2" aria-selected="true"> Запчасти бу</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#laptop2" role="tab" aria-controls="laptop2" aria-selected="false">Новые</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#elect" role="tab" aria-controls="elect" aria-selected="false">Двигатели</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="desktop2" role="tabpanel">
+                                    <div class="product_slick">
+                                        <div class="row product_column3">
+                                            {% for car in cars_features %}
+                                            <div class="col-lg-3">
+                                                <div class="single_product">
+                                                    <div class="product_thumb">
+                                                        <a class="primary_img" href="{% url 'detailed_id' car.product_id %}"><img src="{{  CDN_SERVER }}/media/{{ car.product_id }}/300/0.webp" alt="{{ car.name }}" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';"></a>
+                                                        <div class="quick_button">
+                                                            <a href="{% url 'detailed_id' car.product_id %}" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                        </div>
+                                                        <div class="label_product">
+                                                            <span class="label_sale">-57%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_content">
+                                                        <div class="content_inner">
+                                                            <div class="product_name">
+                                                                <h3><a href="{% url 'detailed_id' car.product_id %}">{{ car.product_id.name }}</a></h3>
+                                                            </div>
+                                                            {{ car }} ||| {{ cart }}
+                                                            <div class="price_box">
+                                                                <span class="old_price">&#x20bd; {{ car.product_id.price }}</span>
+                                                                <span class="current_price">&#x20bd; {{ car.product_id.price }}</span>
+                                                            </div>
+
+                                                            <div class="action_links slick_button_reset">
+                                                                {% include "shop/snippets/home_add_tocart.html"  with form=form product=car.product_id cart=cart %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="laptop2" role="tabpanel">
+                                    <div class="product_slick">
+                                        <div class="row product_column3">
+                                            {% for car2 in cars_features2 %}
+                                            <div class="col-lg-3">
+                                                <div class="single_product">
+                                                    <div class="product_thumb">
+                                                        <a class="primary_img" href="{% url 'detailed_id' car2.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ car2.product_id }}/300/0.webp" alt="{{ car2.name }}" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';"></a>
+                                                        <div class="quick_button">
+                                                            <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                        </div>
+                                                        <div class="label_product">
+                                                            <span class="label_sale">-57%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_content">
+                                                        <div class="content_inner">
+                                                            <div class="product_name">
+                                                                <h3><a href="{% url 'detailed_id' car2.product_id %}">{{ car2.product_id.name }}</a></h3>
+                                                            </div>
+                                                            <div class="price_box">
+                                                                <span class="old_price">&#x20bd; {{ car2.product_id.price }}</span>
+                                                                <span class="current_price">&#x20bd; {{ car2.product_id.price }}</span>
+                                                            </div>
+                                                            <div class="action_links slick_button_reset">
+                                                                {% include "shop/snippets/home_add_tocart.html"  with form=form product=car2.product_id cart=cart %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="elect" role="tabpanel">
+                                    <div class="product_slick">
+                                        <div class="row product_column3">
+                                            {% for car3 in cars_features %}
+                                            <div class="col-lg-3">
+                                                <div class="single_product">
+                                                    <div class="product_thumb">
+                                                        <a class="primary_img" href="{% url 'detailed_id' car3.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ car3.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ car3.name }}"></a>
+                                                        <div class="quick_button">
+                                                            <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                        </div>
+                                                        <div class="label_product">
+                                                            <span class="label_sale">-57%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product_content">
+                                                        <div class="content_inner">
+                                                            <div class="product_name">
+                                                                <h3><a href="{% url 'detailed_id' car3.product_id %}">{{ car3.product_id.name }}</a></h3>
+                                                            </div>
+                                                            <div class="price_box">
+                                                                <span class="old_price">&#x20bd; {{ car3.product_id.price }}</span>
+                                                                <span class="current_price">&#x20bd; {{ car3.product_id.price }}</span>
+                                                            </div>
+                                                            <div class="action_links slick_button_reset">
+                                                                {% include "shop/snippets/home_add_tocart.html"  with form=form product=car3.product_id cart=cart %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--product area end-->
+                        <!--banner area start-->
+                        <div class="banner_area">
+                            <div class="single_banner">
+                                <a href="#"><img src="{% static 'img/main_page/ddeere_construction.jpg' %}" alt="Запчасти к строительной технике"></a>
+                            </div>
+                        </div>
+                        <!--banner area end-->
+                        <!--product area start-->
+                        <div class="product_area product_two default_product">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="section_title">
+                                        <h2> Запчасти к строительной технике</h2>
+                                        <div class="icone_img">
+                                            <img src="{% static 'img/icon/product_icone3.png' %}" alt="">
+                                        </div>
+                                        <ul class="product_tab_button nav" role="tablist">
+                                            <li>
+                                                <a class="active" data-toggle="tab" href="#tech" role="tab" aria-controls="tech" aria-selected="true">Бульдозеры</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#speaker" role="tab" aria-controls="speaker" aria-selected="false">Экскаваторы</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#Crown" role="tab" aria-controls="Crown" aria-selected="false">Погрузчики</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tech" role="tabpanel">
+                                        <div class="row">
+                                            <div class="product_carousel carousel_column3 owl-carousel">
+                                                {% for construct in construction_machines %}
+                                                <div class="col-lg-3">
+                                                    <div class="single_product">
+                                                        <div class="product_thumb">
+                                                            <a class="primary_img" href="{% url 'detailed_id' construct.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ construct.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ construct.product_id.name }}"></a>
+                                                            <div class="quick_button">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                            </div>
+                                                            <div class="label_product">
+                                                                <span class="label_sale">-57%</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product_content">
+                                                            <div class="content_inner">
+                                                                <div class="product_name">
+                                                                    <h3><a href="{% url 'detailed_id' construct.product_id %}">{{ construct.product_id.name }}</a></h3>
+                                                                </div>
+                                                                <div class="price_box">
+                                                                    <span class="old_price">&#x20bd; {{ construct.product_id.price }}</span>
+                                                                    <span class="current_price">&#x20bd; {{ construct.product_id.price }}</span>
+                                                                </div>
+                                                                <div class="action_links">
+                                                                    {% include "shop/snippets/home_add_tocart.html"  with form=form product=construct.product_id cart=cart %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="speaker" role="tabpanel">
+                                        <div class="row">
+                                            <div class="product_carousel carousel_column3 owl-carousel">
+                                            {% for construct2 in construction_machines2 %}
+                                                <div class="col-lg-3">
+                                                    <div class="single_product">
+                                                        <div class="product_thumb">
+                                                            <a class="primary_img" href="{% url 'detailed_id' construct2.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ construct2.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ construct2.product_id.name }}"></a>
+                                                            <div class="quick_button">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                            </div>
+                                                            <div class="label_product">
+                                                                <span class="label_sale">-57%</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product_content">
+                                                            <div class="content_inner">
+                                                                <div class="product_name">
+                                                                    <h3><a href="{% url 'detailed_id' construct2.product_id %}">{{ construct2.product_id.name }}</a></h3>
+                                                                </div>
+                                                                <div class="price_box">
+                                                                    <span class="old_price">&#x20bd; {{ construct2.product_id.price }}</span>
+                                                                    <span class="current_price">&#x20bd; {{ construct2.product_id.price }}</span>
+                                                                </div>
+                                                                <div class="action_links">
+                                                                    {% include "shop/snippets/home_add_tocart.html"  with form=form product=construct2.product_id cart=cart %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Crown" role="tabpanel">
+                                        <div class="row">
+                                            <div class="product_carousel carousel_column3 owl-carousel">
+                                            {% for construct3 in construction_machines3 %}
+                                                <div class="col-lg-3">
+                                                    <div class="single_product">
+                                                        <div class="product_thumb">
+                                                            <a class="primary_img" href="{% url 'detailed_id' construct3.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ construct3.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ construct3.product_id.name }}"></a>
+                                                            <div class="quick_button">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                            </div>
+                                                            <div class="label_product">
+                                                                <span class="label_sale">-57%</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product_content">
+                                                            <div class="content_inner">
+                                                                <div class="product_name">
+                                                                    <h3><a href="{% url 'detailed_id' construct3.product_id %}">{{ construct3.product_id.name }}</a></h3>
+                                                                </div>
+                                                                <div class="price_box">
+                                                                    <span class="old_price">&#x20bd; {{ construct3.product_id.price }}</span>
+                                                                    <span class="current_price">&#x20bd; {{ construct3.product_id.price }}</span>
+                                                                </div>
+                                                                <div class="action_links">
+                                                                    {% include "shop/snippets/home_add_tocart.html"  with form=form product=construct3.product_id cart=cart %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!--product area end-->
+
+                        <!--product area start-->
+                        <div class="product_area product_two default_product">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="section_title">
+                                        <h2>Запчасти для разной техники</h2>
+                                        <div class="icone_img">
+                                            <img src="{% static 'img/icon/product_icone4.png' %}" alt="">
+                                        </div>
+                                        <ul class="product_tab_button nav" role="tablist">
+                                            <li>
+                                                <a class="active" data-toggle="tab" href="#Audio" role="tab" aria-controls="Audio" aria-selected="true">Мотоциклы</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#Tablets2" role="tab" aria-controls="Tablets2" aria-selected="false">Комбайны</a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#Laptops2" role="tab" aria-controls="Laptops2" aria-selected="false">Тракторы</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="Audio" role="tabpanel">
+                                        <div class="row">
+                                            <div class="product_carousel carousel_column3 owl-carousel">
+                                                {% for misc in misc_parts %}
+                                                <div class="col-lg-3">
+                                                    <div class="single_product">
+                                                        <div class="product_thumb">
+                                                            <a class="primary_img" href="{% url 'detailed_id' misc.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ misc.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ misc.product_id.name }}"></a>
+                                                            <div class="quick_button">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                            </div>
+                                                            <div class="label_product">
+                                                                <span class="label_sale">-57%</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product_content">
+                                                            <div class="content_inner">
+                                                                <div class="product_name">
+                                                                    <h3><a href="{% url 'detailed_id' misc.product_id %}">{{ misc.product_id.name }}</a></h3>
+                                                                </div>
+                                                                <div class="price_box">
+                                                                    <span class="old_price">&#x20bd; {{ misc.product_id.price }}</span>
+                                                                    <span class="current_price">&#x20bd; {{ misc.product_id.price }}</span>
+                                                                </div>
+                                                                <div class="action_links">
+                                                                    {% include "shop/snippets/home_add_tocart.html"  with form=form product=misc.product_id cart=cart %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Tablets2" role="tabpanel">
+                                        <div class="row">
+                                            <div class="product_carousel  carousel_column3 owl-carousel">
+                                            {% for misc2 in misc_parts2 %}
+                                                <div class="col-lg-3">
+                                                    <div class="single_product">
+                                                        <div class="product_thumb">
+                                                            <a class="primary_img" href="{% url 'detailed_id' misc2.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ misc2.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ misc2.product_id.name }}"></a>
+                                                            <div class="quick_button">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                            </div>
+                                                            <div class="label_product">
+                                                                <span class="label_sale">-57%</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product_content">
+                                                            <div class="content_inner">
+                                                                <div class="product_name">
+                                                                    <h3><a href="{% url 'detailed_id' misc2.product_id %}">{{ misc2.product_id.name }}</a></h3>
+                                                                </div>
+                                                                <div class="price_box">
+                                                                    <span class="old_price">&#x20bd; {{ misc2.product_id.price }}</span>
+                                                                    <span class="current_price">&#x20bd; {{ misc2.product_id.price }}</span>
+                                                                </div>
+                                                                <div class="action_links">
+                                                                    {% include "shop/snippets/home_add_tocart.html"  with form=form product=misc2.product_id cart=cart %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Laptops2" role="tabpanel">
+                                        <div class="row">
+                                            <div class="product_carousel carousel_column3 owl-carousel">
+                                            {% for misc3 in misc_parts3 %}
+                                                <div class="col-lg-3">
+                                                    <div class="single_product">
+                                                        <div class="product_thumb">
+                                                            <a class="primary_img" href="{% url 'detailed_id' misc3.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ misc3.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ misc3.product_id.name }}"></a>
+                                                            <div class="quick_button">
+                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                            </div>
+                                                            <div class="label_product">
+                                                                <span class="label_sale">-57%</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product_content">
+                                                            <div class="content_inner">
+                                                                <div class="product_name">
+                                                                    <h3><a href="{% url 'detailed_id' misc3.product_id %}">{{ misc3.product_id.name }}</a></h3>
+                                                                </div>
+                                                                <div class="price_box">
+                                                                    <span class="old_price">&#x20bd; {{ misc3.product_id.price }}</span>
+                                                                    <span class="current_price">&#x20bd; {{ misc3.product_id.price }}</span>
+                                                                </div>
+                                                                <div class="action_links">
+                                                                    {% include "shop/snippets/home_add_tocart.html"  with form=form product=misc3.product_id cart=cart %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!--product area end-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--messages info area-->
+        <div class="messages_info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="messages_desc">
+                            <p>Бесплатная доставка по Москве при заказе от <span> 30 тыс.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--messages info  end-->
+
+        <!--custom product area-->
+        <div class="custom_product">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12">
+                        <!--featured product area-->
+                        <div class="small_product_area">
+                            <div class="section_title">
+                                <h2> Спецпредложение</h2>
+                                <div class="icone_img">
+                                    <img src="{% static 'img/icon/product_icone6.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="small_product_items small_product_active">
+                                {% for feach in featured %}
+                                <div class="single_product_items">
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="{% url 'detailed_id' feach.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ feach.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ feach.product_id.name }}"></a>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h3><a href="{% url 'detailed_id' feach.product_id %}">{{ feach.product_id.name }}</a></h3>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">&#x20bd; {{ feach.product_id.price }}</span>
+                                            <span class="current_price">&#x20bd; {{ feach.product_id.price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                       <!--featured product end-->
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <!--mostview product area-->
+                        <div class="small_product_area">
+                            <div class="section_title">
+                                <h2>Популярные</h2>
+                                <div class="icone_img">
+                                    <img src="{% static 'img/icon/product_icone6.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="small_product_items small_product_active">
+                                {% for most in most_viewed %}
+                                <div class="single_product_items">
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="{% url 'detailed_id' most.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ most.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ most.product_id.name }}"></a>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h3><a href="{% url 'detailed_id' most.product_id %}">{{ most.product_id.name }}</a></h3>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">&#x20bd; {{ most.product_id.price }}</span>
+                                            <span class="current_price">&#x20bd; {{ most.product_id.price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                       <!--mostview product end-->
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <!--bestSeller product area-->
+                        <div class="small_product_area">
+                            <div class="section_title">
+                                <h2>Бестселер</h2>
+                                <div class="icone_img">
+                                    <img src="{% static 'img/icon/product_icone6.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="small_product_items small_product_active">
+                                {% for best in bestseller %}
+                                <div class="single_product_items">
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="{% url 'detailed_id' best.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ best.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ best.product_id.name }}"></a>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_name">
+                                            <h3><a href="{% url 'detailed_id' best.product_id %}">{{ best.product_id.name }}</a></h3>
+                                        </div>
+                                        <div class="price_box">
+                                            <span class="old_price">&#x20bd; {{ best.product_id.price }}</span>
+                                            <span class="current_price">&#x20bd; {{ best.product_id.price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                       <!--bestSeller product end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--custom product end-->
+
+    </section>
+    <!--home product wrapper end-->
+
+
+    <!--brand area start-->
+    <div class="brand_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="brand_container owl-carousel">
+                        <div class="single_brand">
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand1.png' %}" alt=""></a>
+                            </div>
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand2.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="single_brand">
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand3.png' %}" alt=""></a>
+                            </div>
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand4.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="single_brand">
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand5.png' %}" alt=""></a>
+                            </div>
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand6.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="single_brand">
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand7.png' %}" alt=""></a>
+                            </div>
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand8.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="single_brand">
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand9.png' %}" alt=""></a>
+                            </div>
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand10.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="single_brand">
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand3.png' %}" alt=""></a>
+                            </div>
+                            <div class="brand_items">
+                                <a href="#"><img src="{% static 'img/brand/brand4.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--brand area end-->
+
+    <!--shipping area start-->
+    <section class="shipping_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="single_shipping">
+                        <div class="shipping_icone">
+                            <img src="{% static 'img/about/shipping1.png' %}" alt="">
+                        </div>
+                        <div class="shipping_content">
+                            <h2>Free Delivery</h2>
+                            <p>And free returns. See checkout for delivery dates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single_shipping">
+                        <div class="shipping_icone">
+                            <img src="{% static 'img/about/shipping2.png' %}" alt="">
+                        </div>
+                        <div class="shipping_content">
+                            <h2>Safe Payment</h2>
+                            <p>And free returns. See checkout for delivery dates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single_shipping">
+                        <div class="shipping_icone">
+                            <img src="{% static 'img/about/shipping3.png' %}" alt="">
+                        </div>
+                        <div class="shipping_content">
+                            <h2>Shop With Confidence</h2>
+                            <p>And free returns. See checkout for delivery dates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single_shipping">
+                        <div class="shipping_icone">
+                            <img src="{% static 'img/about/shipping4.png' %}" alt="">
+                        </div>
+                        <div class="shipping_content">
+                            <h2>24/7 Help Center</h2>
+                            <p>And free returns. See checkout for delivery dates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--shipping area end-->
+{% endblock content %}

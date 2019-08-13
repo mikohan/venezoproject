@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_title %}404 ошибка{% endblock %}
+{% block content %} <!--error section area start-->
+    <div class="error_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="error_form">
+                        <h1>404</h1>
+                        <h2>Opps! СТРАНИЦА НЕ НАЙДЕНА!</h2>
+                        <p>Страница была удалена или изменена<br> и временно недоступна.</p>
+                        <form action="#">
+                            <input placeholder="Search..." type="text">
+                            <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                        </form>
+                        <a href="{% url 'home' %}">Перейти на главную страницу</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--error section area end-->
+{% endblock content %}

@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ecommerce_extras %}
+{% block page_title %}{{ product.name|title }} | {{ brad_cat_name|title  }} | {{ brad_subcat_name|title  }}{% endblock %}
+{% block page_description %}{{ product.name|title }} {{ brad_cat_name|title  }} {{ brad_subcat_name|title  }} Купить на VENEZO.RU{% endblock %}
+{% block content %}
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="{% url 'home' %}">Главная</a></li>
+                        <li><a href="{% url 'products' %}" >Каталог</a></li>
+                        <li><a href="{% url 'subsubcat' brad_cat_slug %}">{{ brad_cat_name }}</a></li>
+                        <li><a href="{% url 'last' brad_subcat_slug %}">{{ brad_subcat_name }}</a></li>
+                        <li>{{ product.name|lower }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!--product details start-->
+<div class="product_details pt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-tab">
+
+                    <div id="img-1" class="zoomWrapper single-zoom">
+                        {# if not product.title|check_image_exist:product.pk #}
+                        <!--<a href="#">
+                            <img id="zoom1" src="{% static 'img/prod_imgs/girl.jpg' %}"
+                                 data-zoom-image="{% static 'img/prod_imgs/girl.jpg' %}" alt="big-1">
+                        </a>-->
+                        {# else #}
+                        <img id="zoom1" src="{{ CDN_SERVER }}/media/{{ product.pk }}/600/0.webp"
+                                 data-zoom-image="{{ CDN_SERVER }}/media/{{ product.pk }}/600/0.webp">
+                        {# endif #}
+                    </div>
+
+                    <div class="single-zoom-thumb">
+                        <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                            {% for img in img_list %}
+                            {% with img|stringformat:"s" as img_name %}
+                                {% with product.pk|stringformat:"s" as img_folder %}
+                                {% with "http://cdn.venezo.ru:8008/media/"|add:img_folder|add:"/300/"|add:img_name|add:".webp" as url_check %}
+
+                                {% if url_check|check_url_exist %}
+                                    <li>
+                                        <a href="#" class="elevatezoom-gallery active" data-update=""
+                                           data-image="{{ CDN_SERVER }}/media/{{ product.pk }}/600/{{ img }}.webp"
+                                           data-zoom-image="{{ CDN_SERVER }}/media/{{ product.pk }}/600/{{ img }}.webp">
+                                            <img src="{{ CDN_SERVER }}/media/{{ product.pk }}/300/{{ img }}.webp" alt="zo-th-1"/>
+                                        </a>
+
+                                    </li>
+                            {% else %}
+                                        {% endif %}
+                                    {% endwith %}
+                                {% endwith %}
+                            {% endwith %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product_d_right">
+                        <h1>{{ object.name }}</h1>
+                        <div class="product_nav">
+                            <ul>
+                                <li class="prev"><a href="{% url 'detailed_id' previous.pk %}"><i class="fa fa-angle-left"></i></a></li>
+                                <li class="next"><a href="{% url 'detailed_id' next.pk %}"><i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="product_price">
+                            <span class="old_price">&#x20bd; {{ object.price }}</span>
+                            <span class="current_price">&#x20bd; {{ object.price }}</span>
+                        </div>
+                        <div class="product_desc">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
+                                    tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis
+                                    justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
+                                    nulla.</p>
+                        </div>
+
+                        <div class="product_variant quantity white_button">
+
+                             {% include "shop/snippets/update_cart.html"  with form=form product=object cart=cart %}
+                            <!--<label>Количество</label>
+                            <input min="0" max="100" value="1" type="number">
+                            <button class="button" type="submit">В корзину</button>-->
+                        </div>
+                        <div class=" product_d_action">
+                            <ul>
+                                <li><a href="#" title="Add to wishlist">+ Добавить в блокнот</a></li>
+                                <li><a href="#" title="Add to wishlist">+ Сравнить</a></li>
+                            </ul>
+                        </div>
+                        <div class="product_meta">
+                            <span>Машина: <a href="#">{{ product.car}}</a></span>
+                        </div>
+
+                    </form>
+                    <div class="priduct_social">
+                        <ul>
+                            <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#" title="google +"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" title="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product details end-->
+
+<!--product info start-->
+<div class="product_d_info">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="product_d_inner">
+                    <div class="product_info_button">
+                        <ul class="nav" role="tablist">
+                            <li>
+                                <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info"
+                                   aria-selected="false">Описание</a>
+                            </li>
+                            <!--<li>
+                                <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet"
+                                   aria-selected="false">Технические параметры</a>
+                            </li>-->
+                            <!--<li>
+                                <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
+                                   aria-selected="false">Отзывы (1)</a>
+                            </li>-->
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="info" role="tabpanel">
+                            <div class="product_info_content">
+                                <p>{{ product.description|safe }}</p>
+                            </div>
+                        </div>
+                        <!--<div class="tab-pane fade" id="sheet" role="tabpanel">
+                            <div class="product_d_table">
+                                <form action="#">
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td class="first_child">Compositions</td>
+                                            <td>Polyester</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first_child">Styles</td>
+                                            <td>Girly</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first_child">Properties</td>
+                                            <td>Short Dress</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                            <div class="product_info_content">
+                                <p>Fashion has been creating well-designed collections since 2010. The brand offers
+                                    feminine designs delivering stylish separates and statement dresses which have since
+                                    evolved into a full ready-to-wear collection in which every item is a vital part of
+                                    a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and
+                                    unmistakable signature style. All the beautiful pieces are made in Italy and
+                                    manufactured with the greatest attention. Now Fashion extends to a range of
+                                    accessories including shoes, hats, belts and more!</p>
+                            </div>
+                        </div>-->
+
+                        <!--<div class="tab-pane fade" id="reviews" role="tabpanel">
+                            <div class="reviews_wrapper">
+                                <h2>1 review for Donec eu furniture</h2>
+                                <div class="reviews_comment_box">
+                                    <div class="comment_thmb">
+                                        <img src="{% static 'img/blog/comment2.jpg' %}" alt="">
+                                    </div>
+                                    <div class="comment_text">
+                                        <div class="reviews_meta">
+                                            <div class="star_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <p><strong>admin </strong>- September 12, 2018</p>
+                                            <span>roadthemes</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="comment_title">
+                                    <h2>Add a review </h2>
+                                    <p>Your email address will not be published. Required fields are marked </p>
+                                </div>
+                                <div class="product_ratting mb-10">
+                                    <h3>Your rating</h3>
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product_review_form">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="review_comment">Your review </label>
+                                                <textarea name="comment" id="review_comment"></textarea>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6">
+                                                <label for="author">Name</label>
+                                                <input id="author" type="text">
+
+                                            </div>
+                                            <div class="col-lg-6 col-md-6">
+                                                <label for="email">Email </label>
+                                                <input id="email" type="text">
+                                            </div>
+                                        </div>
+                                        <button type="submit">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product info end-->
+
+<!--product area start-->
+<div class="product_area related">
+    <div class="container">
+        <div class="related_products">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_title">
+                        <h2>Похожие продукты </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="product_carousel product_column4 owl-carousel">
+                    {% for  sim in similar %}
+                    <div class="col-lg-3">
+                        <div class="single_product">
+                            <div class="product_thumb">
+                                <a class="primary_img" href="{% url 'detailed_id' sim.pk %}"><img
+                                        src="{{ CDN_SERVER }}/media/{{ sim.pk }}/300/0.webp" alt="{{ sim.name }}" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';"></a>
+                                <!--<a class="secondary_img" href="{% url 'detailed_id' sim.pk %}"><img
+                                        src="{% static 'img/product/product13.jpg' %}" alt=""></a>-->
+                                <div class="quick_button">
+                                    <a href="#" data-toggle="modal" data-target="#modal_box_{{ sim.pk }}" title="quick view"> <i
+                                            class="ion-eye"></i></a>
+                                </div>
+                                <div class="label_product">
+                                    <span class="label_sale">-57%</span>
+                                </div>
+                            </div>
+                            <div class="product_content">
+                                <div class="content_inner">
+                                    <div class="product_name">
+                                        <h3><a href="{% url 'detailed_id' sim.pk %}">{{ sim.name}}</a></h3>
+                                    </div>
+                                    <div class="price_box">
+                                        <!--<span class="old_price">$420.00</span>-->
+                                        <span class="current_price">&#x20bd; {{ sim.price }}</span>
+                                    </div>
+                                    <div class="action_links">
+                                        <ul>
+                                            <li class="add_to_cart detailed_add_to_cart"><a href="cart.html" title="add to cart"><i
+                                                    class="ion-bag"></i> В корзину</a></li>
+
+                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
+                                                    class="fa fa-heart-o"></i></a></li>
+                                            <li class="compare"><a href="#" title="compare"><i
+                                                    class="ion-ios-settings-strong"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product area end-->
+{% endblock %}
