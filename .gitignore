@@ -12,9 +12,9 @@ db.sqlite3
 media
 dumps
 venezo
-my_static
-!static_root
-static_root/img
+my_static/
+
+img
 
 media_root
 my.cnf
