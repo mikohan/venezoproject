@@ -100,7 +100,7 @@
                             {% for product in products %}
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="{% url 'detailed_id' product.pk %}"><img src="{% static 'img/prod_thumbs/' %}{{ product.pk }}.webp" alt=""></a>
+                                    <a href="{% url 'detailed_id' product.pk %}"><img src="{{ CDN_SERVER }}/media/{{ product.pk }}/300/0.webp" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ product.name }}"></a>
                                 </div>
                                 <div class="post_info">
                                     <a href="{% url 'detailed_id' product.pk %}">{{ product.name }}</a>

@@ -18,7 +18,7 @@ from addresses.views import checkout_address_create_view, checkout_address_reuse
 from carts.views import cart_detail_api_view
 
 urlpatterns = [
-    path(r'^favicon.+$', RedirectView.as_view(url='/static/img/favicon-venezo.png')),    
+    #path(r'^favicon.+$', RedirectView.as_view(url='/static/img/favicon-venezo.png')),
     path('admin/', admin.site.urls),
     path('', home_page, name='home'),
     path('about/', about_page, name='about'),

@@ -4,6 +4,8 @@ from .models import BlogModel
 from product.models import AlegroGoods, CatSubRus
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.conf import settings
+
 
 class Blog(ListView):
     model = BlogModel
@@ -22,6 +24,7 @@ class Blog(ListView):
         context['products']     = AlegroGoods.objects.filter(Q(name__icontains='blotn') | Q(name__icontains='filtr'))[:5]
         context['tags'] = CatSubRus.objects.filter(Q(pk__lt=604) & (Q(rus_name__icontains='освещен') | Q(rus_name__icontains='элект')))[:10]
         context['cats'] = CatSubRus.objects.filter(Q(pk__gt=604) & Q(pk__lt=1018) & (Q(rus_name__icontains='освещен') | Q(rus_name__icontains='элект')))[:10]
+        context['CDN_SERVER'] = settings.CDN_SERVER
         return context
 
 
