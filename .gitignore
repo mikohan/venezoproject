@@ -13,6 +13,7 @@ media
 dumps
 venezo
 my_static
+!static_root
 static_root/img
 
 media_root
