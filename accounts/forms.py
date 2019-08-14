@@ -84,7 +84,7 @@ class RegisterForm(forms.Form):
         qs = User.objects.filter(email=email)
         if qs.exists():
             raise forms.ValidationError("Этот адрес электронной почты занят!")
-        return username
+        return email
 
     def clean(self):
         data = self.cleaned_data
