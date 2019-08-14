@@ -1,0 +1,120 @@
+/*  04. banner section css here  */
+.banner_area{
+    margin-bottom: 40px;
+}
+.single_banner{
+    position: relative;
+    border: 1px solid $grey_color;
+    @media #{$large-mobile}{
+        margin-bottom: 30px;
+    }
+    &.b_right{
+        @media #{$large-mobile}{
+            margin-bottom: 0;
+        }
+    }
+    &::before{
+        background: rgba(255, 255, 255, 0.3);
+        bottom: 0;
+        content: "";
+        left: 50%;
+        position: absolute;
+        right: 51%;
+        top: 0;
+        opacity: 1;
+        pointer-events: none;
+    }
+    &:hover{
+        &::before{
+            left: 0;
+            right: 0;
+            opacity: 0;
+            transition: all 900ms linear;
+            
+        }
+        &::after{
+            top: 0;
+            bottom: 0;
+            opacity: 0;
+            transition: all 900ms linear;
+        }
+    }
+    &::after{
+        background: rgba(255, 255, 255, 0.6);
+        bottom: 50%;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        opacity: 1;
+        pointer-events: none;
+    }
+}
+
+
+/*home two css here*/
+.banner_right{
+    margin-bottom: 0;
+    @media #{$tablet-device}{
+        display: flex;
+        justify-content: space-between;
+    }
+    & .single_banner{
+         @media #{$tablet-device}{
+            width: 50%;
+            float: left;
+            margin-left: 30px; 
+        }
+        @media #{$large-mobile}{
+            margin-bottom: 0;
+        }
+        & a{
+            @media #{$tablet-device}{
+               width: 100%;
+            }
+            @media #{$large-mobile}{
+                width: 100%;
+            }
+            & img{
+                @media #{$tablet-device}{
+                   width: 100%;
+                }
+                @media #{$large-mobile}{
+                    width: 100%;
+                }
+            }
+        }
+        &:first-child{
+            margin-bottom: 20px;
+            
+            @media #{$tablet-device}{
+                margin-left: 0;
+                margin-bottom: 0;
+            }
+            @media #{$large-mobile}{
+                margin-bottom: 30px;
+            }
+             
+        }
+    }
+}
+.banner_two{
+    margin-bottom: 60px;
+    
+}
+
+
+
+/*home four css here*/
+.banner_four{
+    margin-bottom: 60px;
+}
+
+
+
+
+
+
+
+

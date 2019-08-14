@@ -1,0 +1,320 @@
+/*  07. footer area css here */
+.footer_widgets{
+    background: #f7f7f7;
+    padding-top: 60px;
+}
+.footer_top {
+	padding-bottom: 60px;
+    @media #{$tablet-device}{
+       padding-bottom: 22px;
+    }
+    @media #{$large-mobile}{
+       padding-bottom: 24px;
+    }
+}
+.widgets_container{
+     @media #{$tablet-device}{
+       margin-bottom: 28px;
+    }
+    @media #{$large-mobile}{
+       margin-bottom: 27px;
+        text-align: center;
+    }
+    & h3{
+        color: $fonts_color6;
+        font-size: 16px;
+        line-height: 16px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+  
+}
+.footer_logo{
+    margin-bottom: 12px;
+}
+.footer_contact{
+    & p{
+        font-size: 14px;
+        color: $fonts_color6;
+        margin-bottom: 15px;
+        line-height: 25px;
+    }
+    & ul{
+        margin-top: 10px;
+        & li{
+            display: inline-block;
+            margin-right: 7px;
+            @media #{$desktop-device}{
+                margin-right: 5px;
+            }
+            @media #{$large-mobile}{
+                margin-right: 5px;
+            }
+            &:last-child{
+                margin-right: 0;
+            }
+            & a{
+                color: #b2b2b2;
+                font-size: 18px;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                border-radius: 50%;
+                display: block;
+                color: $body-color;
+                @media #{$large-mobile}{
+                    font-size: 16px;
+                    width: 38px;
+                    height: 38px;
+                    line-height: 38px;
+                }
+                
+            }
+            &.twitter{
+                & a{
+                    background: #40c1df;
+                    &:hover{
+                        background: $secondary_color;
+                    }
+                }
+            }
+            &.facebook{
+                & a{
+                    background: #3c5b9b;
+                    &:hover{
+                        background: $secondary_color;
+                    }
+                }
+            }
+            &.googleplus{
+                & a{
+                    background: #ed3c32;
+                    &:hover{
+                        background: $secondary_color;
+                    }
+                }
+            }
+            &.behance{
+                & a{
+                    background: #c619b8;
+                    &:hover{
+                        background: $secondary_color;
+                    }
+                }
+            }
+            &.pinterest{
+                & a{
+                    background: #eb8314;
+                    &:hover{
+                        background: $secondary_color;
+                    }
+                }
+            }
+            &.youtube{
+                & a{
+                    background: #c72982;
+                    &:hover{
+                        background: $secondary_color;
+                    }
+                }
+            }
+        }
+    }
+}
+.footer_menu{
+    & ul{
+        & li{
+            line-height: 30px;
+            & a{
+                display: block;
+                font-weight: 400;
+                font-size: 14px;
+                color: $fonts_color6;
+                &:hover{
+                    color: $secondary_color;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+.copyright_area{
+    @media #{$tablet-device}{
+        text-align: center;
+        margin-bottom: 14px;
+    }
+    @media #{$large-mobile}{
+       text-align: center;
+        margin-bottom: 14px;
+    }
+    & p{
+        text-transform: capitalize;
+        line-height: 30px;
+        font-size:14px;
+        color: $fonts_color6;
+        & a{
+            color: $secondary_color;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+
+.footer_bottom {
+	padding: 23px 0 16px;
+    border-top: 1px solid $grey_color;
+    @media #{$tablet-device}{
+        padding: 20px 0 29px;
+    }
+    @media #{$large-mobile}{
+       padding: 23px 0 19px;
+    }
+
+}
+
+
+.footer_paypal{
+    text-align: right;
+    @media #{$tablet-device}{
+        text-align: center;
+    }
+    @media #{$large-mobile}{
+       text-align: center;
+    }
+    & ul{
+        & li{
+            display: inline-block;
+            margin-left: 10px;
+            &:first-child{
+                margin-right: 0;
+            }
+            @media #{$large-mobile}{
+               margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+
+
+
+/*footer two css here*/
+.footer_two{
+    background: #1f1f1f;
+    & .footer_contact{
+        & p{
+            color: $grey-dark;
+        }
+    }
+    & .widgets_container{
+        & h3{
+            color: $body-color;
+        }
+    }
+    & .footer_menu{
+        & ul{
+            & li{
+                & a{
+                    color: $grey-dark;
+                    &:hover{
+                        color: $secondary_color;
+                    }
+                }
+            }
+        }
+    }
+    & .footer_bottom{
+        border-top: 1px solid #363636;
+    }
+    & .copyright_area{
+        & p{
+            color: $grey-dark;
+        }
+    }
+}
+
+
+
+
+
+
+/*home three css here*/
+.footer_three{
+    & .footer_menu {
+        & ul{
+            & li{
+                & a{
+                    &:hover{
+                        color: $secondary_color2;
+                    }
+                }
+            }
+        }
+    }
+    & .copyright_area{
+        & p{
+            & a{
+                color: $secondary_color2;
+            }  
+        }
+    }
+}
+
+
+.footer_four{
+    & .footer_menu{
+        & ul{
+            & li{
+                & a{
+                    &:hover{
+                        color: $secondary_color3;
+                    }
+                }
+            }
+        }
+    }
+    & .copyright_area{
+        & p{
+            & a{
+                color: $secondary_color3;
+            }
+        }
+    }
+}
+
+.newletter_four{
+    & .newletter_subscribe{
+        & form{
+            & button{
+                background: $secondary_color3;
+                &:hover{
+                    background: $secondary_color6;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

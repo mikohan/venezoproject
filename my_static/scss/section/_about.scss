@@ -1,0 +1,130 @@
+/* 10. about page css here */
+
+
+/* 30. about page css here */
+.about_section {
+	padding-bottom: 52px;
+    @media #{$large-mobile}{
+        padding-bottom: 49px;
+    }
+    
+}
+.about_content{
+    text-align: center;
+    & h1{
+        display: inline-block;
+        font-size: 24px;
+        line-height: 24px;
+        text-transform: capitalize;
+        font-weight: 600;
+        color: $fonts_color6;
+        margin-bottom: 15px;
+        @media #{$large-mobile}{
+            font-size: 20px;
+        }
+    }
+    & p{
+        color: $fonts_color;
+	    margin-bottom: 16px;
+        font-size: 14px;
+        line-height: 26px;
+        @media #{$large-mobile}{
+            margin-bottom: 8px;
+        }
+    }
+    & span{
+        font-size: 14px;
+        color: $secondary_color;
+        font-style: italic;
+    }
+}
+.about_thumb{
+    margin-bottom: 21px;
+}
+.chose_title {
+	text-align: center;
+	margin-bottom: 7px;
+    @media #{$large-mobile}{
+        margin-bottom: 0;
+    }
+    & h1{
+        color: $fonts_color6;
+        display: inline-block;
+        font-size: 24px;
+        line-height: 24px;
+        text-transform: capitalize;
+        font-weight: 600;
+        margin-bottom: 0;
+         @media #{$large-mobile}{
+           font-size: 20px;
+        }
+    }
+}
+
+.chose_content{
+    & h3{
+        font-size: 14px;
+        text-transform: capitalize;
+        color: $fonts_color6;
+        font-weight: 600;
+        line-height: 20px;
+        margin-bottom: 15px;
+    }
+}
+.choseus_area{
+    margin-bottom: 55px;
+}
+.single_chose {
+	text-align: center;
+}
+.single_gallery_section{
+    @media #{$tablet-device}{
+        margin-bottom: 25px;
+    }
+    @media #{$large-mobile}{
+        margin-bottom: 25px;
+    }
+}
+.about_gallery_section {
+	margin-bottom: 51px;
+    @media #{$tablet-device}{
+        margin-bottom: 25px;
+    }
+    @media #{$large-mobile}{
+        margin-bottom: 21px;
+    }
+}
+.gallery_thumb {
+	margin-bottom: 18px;
+    & img{
+        @media #{$large-mobile}{
+            width: 100%;
+        }
+    }
+}
+.about_gallery_content{
+    text-align: center;
+    & h3{
+        font-size: 14px;
+        text-transform: capitalize;
+        color: $fonts_color6;
+        font-weight: 600;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+    & p{
+        line-height: 26px;
+    }
+}
+
+
+
+
+/*about page css end*/
+
+
+
+
+
+
+

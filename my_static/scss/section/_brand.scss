@@ -1,0 +1,33 @@
+/*brand css here*/
+.brand_container{
+    & .brand_items {
+        border-right: 1px solid $grey_color;
+        border-bottom: 1px solid $grey_color;
+        padding: 15px 25px;
+        &:last-child{
+            border-bottom: 0;
+        }
+        @media #{$large-mobile}{
+            border-right: 0;
+        }
+        & img{
+            width: inherit;
+            margin: 0 auto;
+        }
+    }
+
+}
+.brand_area{
+    padding: 60px 0;
+    border-top: 1px solid $grey_color;
+    border-bottom: 1px solid $grey_color;
+     @media #{$large-mobile}{
+        padding: 18px 0;
+    }
+}
+
+.owl-item.active.last{
+    & .brand_items{
+        border-right: 0;
+    }
+}
