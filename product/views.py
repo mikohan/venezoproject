@@ -11,7 +11,7 @@ from django.http import JsonResponse
 from haystack.generic_views import FacetedSearchView as BaseFacetedSearchView
 from haystack.query import SearchQuerySet
 from .forms import *
-from ecommerce.settings import DISCOUNT, IMG_SOURCE_PATH, TMB_SOURCE_PATH
+from ecommerce.settings import DISCOUNT
 from carts.models import Cart
 import os
 import http.client as h
