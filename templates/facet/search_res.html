@@ -167,7 +167,7 @@
                             <div class="product_thumb">
 
                                 <a class="primary_img" href="{% url 'detailed_id' product.pk %}"><img
-                                         src="http://cdn.dnobaka.ru:8008/media/{{ product.pk }}/300/0.webp" alt="{{ product.name }}" onerror="this.onerror=null;this.src='http://cdn.dnobaka.ru:8008/media/default/300/default.png';"></a>
+                                         src="{{ CDN_SERVER }}/media/{{ product.pk }}/300/0.webp" alt="{{ product.name }}" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';"></a>
                                 <div class="quick_button">
                                     <a href="#" data-toggle="modal" data-target="#modal_box" title="quick view"> <i
                                             class="ion-eye"></i></a>
