@@ -188,8 +188,7 @@
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                            <li class="add_to_cart"><a href="cart.html" title="add to cart"><i
-                                                    class="ion-bag"></i> в корзину</a></li>
+                                            {% include "shop/snippets/list_cart.html"  with form=form product=product cart=cart %}
                                             <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i
                                                     class="fa fa-heart-o"></i></a></li>
                                             <li class="compare"><a href="#" title="compare"><i
@@ -219,8 +218,7 @@
                                     </div>
                                     <div class="add_to_links">
                                         <ul>
-                                            <li class="add_to_cart"><a href="cart.html" title="add to cart"><i
-                                                    class="ion-bag"></i> в корзину</a></li>
+                                            {% include "shop/snippets/list_cart.html"  with form=form product=product cart=cart %}
                                             <li class="wishlist"><a href="#" title="Add to Wishlist"><i
                                                     class="fa fa-heart-o"></i> Добавить в блокнот</a></li>
                                             <li class="compare"><a href="#" title="compare"><i
