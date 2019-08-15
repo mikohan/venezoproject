@@ -69,7 +69,7 @@ def login_page(request):
         password = form_register.cleaned_data.get('password')
         new_user = User.objects.create_user(username, email, password)
         #print('on login page', new_user)
-        return redirect('my-account', new_user)
+        return redirect('myaccount', new_user)
 
 
     return render(request, 'auth/login.html', context)
@@ -88,7 +88,7 @@ def register_page(request):
         password = form.cleaned_data.get('password')
         new_user = User.objects.create_user(username, email, password)
         #print('on register page', new_user)
-        return redirect('my-account', new_user)
+        return redirect('myaccount', new_user)
 
 
     return render(request, 'auth/login.html', context)

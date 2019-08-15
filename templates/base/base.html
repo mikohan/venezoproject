@@ -57,7 +57,7 @@
                                 <ul class="dropdown_links">
                                     <li><a href="{% url 'login' %}">Войти </a></li>
                                     <li><a href="{% url 'carts:checkout' %}">Оформить заказ </a></li>
-                                    <li><a href="{% url 'my-account' %}">Мой Аккаунт </a></li>
+                                    <li><a href="{% url 'myaccount' %}">Мой Аккаунт </a></li>
                                     <li><a href="{{ cart_url }}">Корзина</a></li>
                                     <li><a href="wishlist.html">Избранное</a></li>
                                     <li><a href="{% url 'logout' %}">Выйти </a></li>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="middel_right_info">
                             <div class="header_account">
-                                <a href="{% url 'my-account' %}"><i class="ion-android-people"></i></a>
+                                <a href="{% url 'myaccount' %}"><i class="ion-android-people"></i></a>
                             </div>
                             <div class="header_wishlist">
                                 <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
