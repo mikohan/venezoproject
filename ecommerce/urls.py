@@ -12,7 +12,7 @@ from blog import urls as blog_urls
 from carts import urls as cart_urls
 
 from product.views import FacetedSearchView, ProductDetailView
-from accounts.views import login_page, register_page, guest_register_view
+from accounts.views import login_page, register_page, guest_register_view, profile_page
 from django.contrib.auth.views import LogoutView
 from addresses.views import checkout_address_create_view, checkout_address_reuse_view
 from carts.views import cart_detail_api_view
@@ -30,6 +30,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('api/cart/',cart_detail_api_view , name='api-cart'),
     path('register/', register_page, name='register'),
+    path('my-account/', profile_page, name='my-account'),
     path('products/', include(prod_urls), name='products'),
    # path('spec/', include(prod_urls), name='spec'),
     path('blog/', include(blog_urls), name='blog'),
@@ -37,6 +38,7 @@ urlpatterns = [
     path('delivery/', delivery_page, name='delivery'),
     path('find/', FacetedSearchView.as_view(), name='haystack_search'),
     path('search/autocomplete/', autocomplete),
+
 
 
 ]

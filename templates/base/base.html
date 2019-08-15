@@ -12,14 +12,14 @@
     <meta name="robots" content="noindex,nofollow">
     {% block meta %}{% endblock %}
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{% static 'img/favicon-venezo.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon-venezo.png' %}">
 
     <!-- CSS
     ========================= -->
 
     <!--autocomplete css-->
 
-    <link rel="stylesheet" type="text/css" href="{% static "test/css/autocomplete.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'test/css/autocomplete.css' %}" />
 
     <!-- Plugins CSS -->
     <link rel="stylesheet" href=" {% static 'css/plugins.css' %}">
@@ -56,8 +56,8 @@
                             <li class="top_links"><a href="#">Насторйки <i class="ion-chevron-down"></i></a>
                                 <ul class="dropdown_links">
                                     <li><a href="{% url 'login' %}">Войти </a></li>
-                                    <li><a href="checkout.html">Оформить заказ </a></li>
-                                    <li><a href="my-account.html">Мой Аккаунт </a></li>
+                                    <li><a href="{% url 'carts:checkout' %}">Оформить заказ </a></li>
+                                    <li><a href="{% url 'my-account' %}">Мой Аккаунт </a></li>
                                     <li><a href="{{ cart_url }}">Корзина</a></li>
                                     <li><a href="wishlist.html">Избранное</a></li>
                                     <li><a href="{% url 'logout' %}">Выйти </a></li>
@@ -71,13 +71,8 @@
                                     <li><a href="#">Japanese</a></li>
                                 </ul>
                             </li>
-                            <li class="currency"><label>Валюта:</label> <a href="#">Рубль <i
-                                    class="ion-chevron-down"></i></a>
-                                <ul class="dropdown_currency">
-                                    <li><a href="#">EUR – Euro</a></li>
-                                    <li><a href="#">GBP – British Pound</a></li>
-                                    <li><a href="#">INR – India Rupee</a></li>
-                                </ul>
+                            <li class="currency"><label>Валюта: Рубль </label>
+
                             </li>
 
 
@@ -121,7 +116,7 @@
                         </div>
                         <div class="middel_right_info">
                             <div class="header_account">
-                                <a href="my-account.html"><i class="ion-android-people"></i></a>
+                                <a href="{% url 'my-account' %}"><i class="ion-android-people"></i></a>
                             </div>
                             <div class="header_wishlist">
                                 <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
@@ -131,51 +126,40 @@
                                 <span class="cart_quantity"><span class="navbar-cart-count">{{ request.session.cart_items }}</span></span>
                                 <!--mini cart-->
                                 <div class="mini_cart">
+                                    {% for cart_product in request.session.cart_products %}
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href="#"><img src="{% static 'img/s-product/product.jpg' %}" alt=""></a>
+                                            <a href="#"><img src="{{ CDN_SERVER }}/media/{{ cart_product.id }}/150/0.webp" alt="{{ cart_product.name }}"></a>
                                         </div>
                                         <div class="cart_info">
-                                            <a href="#">Aenean eu tristique</a>
+                                            <a href="#">{{ cart_product.name }}</a>
 
-                                            <span class="quantity">Qty: 1</span>
-                                            <span class="price_cart">$60.00</span>
+                                            <!--<span class="quantity">Qty: 1</span>-->
+                                            <span class="price_cart">&#8381; {{ cart_product.price }}</span>
 
                                         </div>
                                         <div class="cart_remove">
                                             <a href="#"><i class="ion-android-close"></i></a>
                                         </div>
                                     </div>
-                                    <div class="cart_item">
-                                        <div class="cart_img">
-                                            <a href="#"><img src="{% static 'img/s-product/product2.jpg' %}" alt=""></a>
-                                        </div>
-                                        <div class="cart_info">
-                                            <a href="#">Lid Cover Cookware</a>
-                                            <span class="quantity">Qty: 1</span>
-                                            <span class="price_cart">$69.00</span>
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="#"><i class="ion-android-close"></i></a>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                     <div class="mini_cart_table">
                                         <div class="cart_total">
-                                            <span>Sub total:</span>
-                                            <span class="price">$138.00</span>
+                                            <span>Сумма:</span>
+                                            <span class="price">&#8381; {{ request.session.cart_total }}</span>
                                         </div>
-                                        <div class="cart_total mt-10">
+                                        <!--<div class="cart_total mt-10">
                                             <span>total:</span>
                                             <span class="price">$138.00</span>
-                                        </div>
+                                        </div>-->
                                     </div>
 
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
-                                            <a href="cart.html">View cart</a>
+                                            <a href="{{ cart_url }}">В корзину</a>
                                         </div>
                                         <div class="cart_button">
-                                            <a href="checkout.html">Checkout</a>
+                                            <a href="{% url 'carts:checkout' %}">Оформить</a>
                                         </div>
 
                                     </div>

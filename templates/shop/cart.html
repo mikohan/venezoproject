@@ -34,8 +34,8 @@
                                             <th class="product_thumb">Картинка</th>
                                             <th class="product_name">Название</th>
                                             <th class="product-price">Цена</th><!--
-                                            <th class="product_quantity">Количество</th>-->
-                                            <th class="product_total">Всего</th>
+                                            <th class="product_quantity">Количество</th>
+                                            <th class="product_total">Всего</th>-->
                                         </tr>
                                     </thead>
                                     <tbody class="cart-body">
@@ -43,11 +43,10 @@
                                             <tr class="cart-products">
                                                 <td class="product_remove">{% include "shop/snippets/remove_products.html"  with form=form product_id=product.id %}</td>
                                                <!--<td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>-->
-                                                <td class="product_thumb"><a href="{% url 'detailed_id' product.pk %}"><img src="{% static 'img/prod_thumbs/' %}{{ product.pk }}.webp" alt=""></a></td>
-                                                <td class="product_name"><a href="{% url 'detailed_id' product.pk %}">{{ product.name|truncatechars:40 }}</a></td>
+                                                <td class="product_thumb"><a href="{% url 'detailed_id' product.pk %}"><img src="{{ CDN_SERVER }}/media/{{ product.pk }}/150/0.webp"</a></td>
+                                                <td class="product_name"><a href="#"><b>{{ product.name }}</b></a></td>
                                                 <td class="product-price">&#x20bd; {{ product.price }}</td><!--
-                                                <td class="product_quantity"><label>Количество</label> <input min="0" max="100" value="1" type="number"></td>
-                                                --><td class="product_total">&#x20bd; {{ product.price }}</td>
+                                                <td class="product_quantity"><label>Количество</label> <input min="0" max="100" value="1" type="number"></td>-->
                                             </tr>
                                         {% endfor %}
                                     </tbody>

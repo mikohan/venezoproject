@@ -10,6 +10,7 @@ from addresses.forms import AddressForm
 from addresses.models import Address
 from django.core.mail import send_mail
 from django.http import JsonResponse
+from django.conf import settings
 
 
 def cart_detail_api_view(request):
@@ -23,11 +24,27 @@ def cart_detail_api_view(request):
     return JsonResponse(cart_data)
 
 
+def view_cart(request, pk):
+    cart_obj = Cart.objects.just_get(request, pk)
+    if not request.user.is_authenticated:
+        return redirect('home')
+    products = [{
+        'id': x.id,
+        'name': x.name,
+        'price': x.price
+    } for x in cart_obj.products.all()]
+    context = {
+            'cart': cart_obj,
+            'porducts': products,
+            'CDN_SERVER': settings.CDN_SERVER,
+            }
+    return render(request, 'shop/cart.html', context)
+
 def cart_home(request):
     cart_obj, new_obj = Cart.objects.new_or_get(request)
 
 
-    return render(request, "shop/cart.html", {'cart' : cart_obj })
+    return render(request, "shop/cart.html", {'cart' : cart_obj, 'CDN_SERVER': settings.CDN_SERVER })
 
 
 
@@ -51,6 +68,14 @@ def cart_update(request):
             added = True
         request.session['cart_items'] = cart_obj.products.count()
         request.session['cart_total'] = cart_obj.subtotal
+
+        products = [{
+            'id': x.id,
+            'name': x.name,
+            'price': x.price
+        } for x in cart_obj.products.all()]
+
+        request.session['cart_products'] = products
         if request.is_ajax():
             json_data = {
                 'added':added,

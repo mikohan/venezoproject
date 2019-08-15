@@ -5,8 +5,9 @@ from django.shortcuts import render, redirect
 from .forms import LoginForm, RegisterForm, GuestForm
 from django.utils.http import is_safe_url
 from .models import GuestEmail
-
-
+from addresses.models import Address
+from billing.models import BillingProfile
+from orders.models import Order
 def guest_register_view(request):
     form = GuestForm(request.POST or None)
     form_register = RegisterForm(request.POST or None)
@@ -39,7 +40,7 @@ def login_page(request):
         'form_register': form_register,
         'page_title': 'Страница Авторизации',
     }
-    print(request.user.is_authenticated)
+    #print(request.user.is_authenticated)
     next_ = request.GET.get('next')
     next_post = request.POST.get('next')
     redirect_path = next_ or next_post or None
@@ -67,7 +68,8 @@ def login_page(request):
         email = form_register.cleaned_data.get('email')
         password = form_register.cleaned_data.get('password')
         new_user = User.objects.create_user(username, email, password)
-        print(new_user)
+        #print('on login page', new_user)
+        return redirect('my-account', new_user)
 
 
     return render(request, 'auth/login.html', context)
@@ -85,7 +87,23 @@ def register_page(request):
         email = form.cleaned_data.get('email')
         password = form.cleaned_data.get('password')
         new_user = User.objects.create_user(username, email, password)
-        print(new_user)
+        #print('on register page', new_user)
+        return redirect('my-account', new_user)
 
 
     return render(request, 'auth/login.html', context)
+
+def profile_page(request, new_user=''):
+    if request.user.is_authenticated:
+        new_user = request.user
+        billing_profile = BillingProfile.objects.get(user_id=new_user.pk)
+        address = Address.objects.filter(billing_profile=billing_profile.pk)
+        orders = Order.objects.filter(billing_profile=billing_profile.pk)
+        print(orders, 'in profile')
+        context = {'user': new_user,
+                    'address': address,
+                    'orders': orders,
+                }
+        return render(request, 'accounts/my_account.html', context)
+    print(new_user, 'in profile')
+    return render(request, 'accounts/my_account.html', context)

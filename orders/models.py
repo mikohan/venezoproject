@@ -39,7 +39,7 @@ class Order(models.Model):
     shipping_total              = models.DecimalField(default=0, max_digits=20, decimal_places=0)
     total                       = models.DecimalField(default=0, max_digits=20, decimal_places=0)
     active                      = models.BooleanField(default=True)
-
+    date                        = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         verbose_name = 'Заказ'

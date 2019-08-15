@@ -23,6 +23,12 @@ class CartManager(models.Manager):
             request.session['cart_id'] = cart_obj.pk
         return cart_obj, new_obj
 
+    def just_get(self, request, pk):
+        cart_id = pk
+        qs = self.get_queryset().filter(id=cart_id)
+        cart_obj = qs.first()
+        return cart_obj
+
     def new(self, user=None):
         user_obj = None
         if user is not None:

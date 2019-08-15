@@ -10,8 +10,8 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="index.html">home</a></li>
-                        <li>My account</li>
+                        <li><a href="index.html">главная</a></li>
+                        <li>Моя страница</li>
                     </ul>
                 </div>
             </div>
@@ -29,12 +29,11 @@
                     <!-- Nav tabs -->
                     <div class="dashboard_tab_button">
                         <ul role="tablist" class="nav flex-column dashboard-list">
-                            <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Dashboard</a></li>
-                            <li><a href="#orders" data-toggle="tab" class="nav-link">Orders</a></li>
-                            <li><a href="#downloads" data-toggle="tab" class="nav-link">Downloads</a></li>
-                            <li><a href="#address" data-toggle="tab" class="nav-link">Addresses</a></li>
-                            <li><a href="#account-details" data-toggle="tab" class="nav-link">Account details</a></li>
-                            <li><a href="login.html" class="nav-link">logout</a></li>
+                            <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Мой аккаунт</a></li>
+                            <li><a href="#orders" data-toggle="tab" class="nav-link">Заказы</a></li>
+                            <li><a href="#address" data-toggle="tab" class="nav-link">Мои адреса</a></li>
+                            <!--<li><a href="#account-details" data-toggle="tab" class="nav-link">Account details</a></li>-->
+                            <li><a href="{% url 'logout' %}" class="nav-link">Выйти</a></li>
                         </ul>
                     </div>
                 </div>
@@ -42,39 +41,35 @@
                     <!-- Tab panes -->
                     <div class="tab-content dashboard_content">
                         <div class="tab-pane fade show active" id="dashboard">
-                            <h3>Dashboard </h3>
-                            <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent
-                                orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">Edit
-                                your password and account details.</a></p>
+                            <h3>Мой аккаунт </h3>
+                            <h4>Имя пользователя: {{ user.username }}</h4>
+                            <h4>Имя: {{ user.first_name }}</h4>
+                            <h4>Фамилия: {{ user.last_name }}</h4>
+                            <p>Здесь Вы можете посмотреть Ваши <a href="#"> прошлые заказы</a>, изменить <a href="#"> адрес доставкм</a> и <a href="#"> изменить пароль или другие детали.</a></p>
                         </div>
                         <div class="tab-pane fade" id="orders">
-                            <h3>Orders</h3>
+                            <h3>Заказы</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Order</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Total</th>
-                                        <th>Actions</th>
+                                        <th>Номер заказа</th>
+                                        <th>Дата</th>
+                                        <th>Статус</th>
+                                        <th>Сумма</th>
+                                        <th>Посмотреть</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                        {% for order in orders %}
                                     <tr>
-                                        <td>1</td>
-                                        <td>May 10, 2018</td>
+                                        <td>{{ order.order_id }}</td>
+                                        <td>{{ order.date }}</td>
                                         <td><span class="success">Completed</span></td>
-                                        <td>$25.00 for 1 item</td>
-                                        <td><a href="cart.html" class="view">view</a></td>
+                                        <td>{{ order.total }}</td>
+                                        <td><a href="{% url 'carts:viewcart' order.cart_id %}" class="view">view</a></td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>May 10, 2018</td>
-                                        <td>Processing</td>
-                                        <td>$17.00 for 1 item</td>
-                                        <td><a href="cart.html" class="view">view</a></td>
-                                    </tr>
+                                    {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
@@ -109,19 +104,17 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="address">
-                            <p>The following addresses will be used on the checkout page by default.</p>
-                            <h4 class="billing-address">Billing address</h4>
+                            <h3 class="billing_address">Мои адреса доставки</h3>
                             <a href="#" class="view">Edit</a>
-                            <p><strong>Bobby Jackson</strong></p>
+                            <p><strong>{{ user.username }} {{ user.first_name }} {{ user.last_name }}</strong></p>
+                            {% for adr in address %}
                             <address>
-                                House #15<br>
-                                Road #1<br>
-                                Block #C <br>
-                                Banasree <br>
-                                Dhaka <br>
-                                1212
+                                {{ adr.address_line }}<br>
+                                {{ adr.city }}<br>
+                                {{ adr.country }}<br>
+                                {{ adr.postal_code }}<br>
                             </address>
-                            <p>Bangladesh</p>
+                            {% endfor %}
                         </div>
                         <div class="tab-pane fade" id="account-details">
                             <h3>Account details </h3>
