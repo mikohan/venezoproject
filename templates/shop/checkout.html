@@ -76,7 +76,7 @@
                     <div id="checkout_coupon" class="collapse show" data-parent="#accordion">
                         <div class="checkout_info font-12">
                             {% if address_qs.exists %}
-                            <div>
+                            <div class="order-address">
                                 {% url 'checkout_address_reuse' as checkout_address_reuse %}
                                 {% include 'addresses/snippets/checkout_form.html' with address_qs=address_qs next_url=request.build_absolute_uri address_type='shipping' action_url=checkout_address_reuse%}
                             </div>
