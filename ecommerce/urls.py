@@ -20,10 +20,11 @@ from django.contrib.sitemaps import views
 from django.contrib.sitemaps import GenericSitemap
 from product.models import AlegroGoods
 from django.utils import timezone
-from .sitemaps import ProductSitemaps, CategoriesSitemaps
+from .sitemaps import ProductSitemaps, CategoriesSitemaps, BlogSitemaps
 sitemaps = {
         'categories': CategoriesSitemaps,
         'products': ProductSitemaps,
+        'blog': BlogSitemaps,
         }
 
 
