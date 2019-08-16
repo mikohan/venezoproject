@@ -147,6 +147,7 @@ def checkout(request):
         'address_form' : address_form,
         'billing_address_form' : billing_address_form,
         'address_qs' : address_qs,
+        'CDN_SERVER': settings.CDN_SERVER,
     }
     return render(request, 'shop/checkout.html', context)
 

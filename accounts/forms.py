@@ -29,6 +29,7 @@ class LoginForm(forms.Form):
 
 class RegisterForm(forms.Form):
     username = forms.CharField(
+        required=True,
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
@@ -37,6 +38,7 @@ class RegisterForm(forms.Form):
         )
     )
     email = forms.EmailField(
+        required=True,
         widget=forms.EmailInput(
             attrs={'class': 'form-control',
                    'placeholder': 'Ваш емейл',
@@ -45,6 +47,7 @@ class RegisterForm(forms.Form):
 
     )
     password = forms.CharField(
+        required=True,
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
@@ -53,6 +56,7 @@ class RegisterForm(forms.Form):
         )
     )
     password2 = forms.CharField(
+        required=True,
         label='Подтвердите пароль',
         widget=forms.PasswordInput(
             attrs={
