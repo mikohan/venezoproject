@@ -152,6 +152,7 @@ USE_L10N = False
 LANGUAGE_CODE = 'ru-RU'
 USE_TZ = True
 TIME_ZONE = 'Europe/Moscow'
+SHOP_EMAIL = 'angara99@gmail.com'
 
 
 

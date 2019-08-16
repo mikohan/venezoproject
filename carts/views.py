@@ -127,10 +127,18 @@ def checkout(request):
             print(order_obj.shipping_address.telephone)
             to_email = str(billing_profile)
             send_mail(
-                'Ваш заказ номер {} на сумму {} отправлен'.format(order_obj.order_id, cart_obj.total),
+                'Ваш заказ номер {} на сумму {} получен venezo.ru'.format(order_obj.order_id, cart_obj.total),
                 'Спасибо за заказ! Менеджер свяжется с Вами в ближайшее рабочее время по телефону {}. Номер Вашего заказа {}'.format(order_obj.shipping_address.telephone, order_obj.order_id),
-                'angara99@gmail.com', # from email
+                settings.SHOP_EMAIL, # from email
                 [to_email], # to email
+                fail_silently=False,
+            )
+            send_mail(
+                'Заказ номер {} на сумму {} venezo.ru'.format(order_obj.order_id, cart_obj.total),
+                'Tелефон {}. Адрес доставки {}<br>{}<br>{}<br>{}'.format(
+                    order_obj.shipping_address.address_line, order_obj.shipping_address.state, order_obj.shipping_address.city, order_obj.shipping_address.postal_code, order_obj.order_id),
+                settings.SHOP_EMAIL,  # from email
+                [settings.SHOP_EMAIL],  # to email
                 fail_silently=False,
             )
             order_obj.mark_paid()
