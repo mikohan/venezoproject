@@ -9,84 +9,76 @@
 
 
 
-<!--breadcrumbs area start-->
-<div class="breadcrumbs_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="breadcrumb_content">
-                    <ul>
-                        <li><a href="index.html">Главная</a></li>
-                        <li>Контакты</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--breadcrumbs area end-->
-
 <!--contact map start-->
 <div class="contact_map pt-30">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="map-area">
-                    <div id="googleMap"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="container">
+       <div class="row">
+           <div class="col-12">
+              <div class="map-area">
+                 <div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d940.6870088332372!2d37.40267952214013!3d55.89140407547924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b5389430b4de03%3A0x9bc8057d70bedbb5!2z0JDQvdCz0LDRgNCwINCX0LDQv9GH0LDRgdGC0Lg!5e0!3m2!1sru!2sru!4v1517403237916" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+                 </div>
+              </div>
+           </div>
+       </div>
+   </div>
 </div>
 <!--contact map end-->
 
 <!--contact area start-->
 <div class="contact_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12">
-                <div class="contact_message content">
-                    <h3>Контакты</h3>
-                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est
-                        notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas
-                        human. qui sequitur mutationem consuetudium lectorum. Mirum est notare quam</p>
-                    <ul>
-                        <li><i class="fa fa-fax"></i> Address : No 40 Baria Sreet 133/2 NewYork City</li>
-                        <li><i class="fa fa-phone"></i> <a href="#">Infor@roadthemes.com</a></li>
-                        <li><i class="fa fa-envelope-o"></i> 0(1234) 567 890</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="contact_message form">
-                    <h3>Отправте Ваш вопрос</h3>
-                    <form id="contact-form" method="POST" action="{% static 'mail.php' %}">{% csrf_token %}
-                        {{ form }}
-                        <!--<p>
-                            <label> Your Name (required)</label>
-                            <input name="name" placeholder="Name *" type="text">
-                        </p>
-                        <p>
-                            <label> Your Email (required)</label>
-                            <input name="email" placeholder="Email *" type="email">
-                        </p>
-                        <p>
-                            <label> Subject</label>
-                            <input name="subject" placeholder="Subject *" type="text">
-                        </p>
-                        <div class="contact_textarea">
-                            <label> Your Message</label>
-                            <textarea placeholder="Message *" name="message" class="form-control2"></textarea>
-                        </div>-->
-                        <button type="submit" class="mt-5"> Отправить</button>
-                        <p class="form-messege"></p>
-                    </form>
+   <div class="container">
+       <div class="row">
+           <div class="col-lg-6 col-md-12">
+              <div class="contact_message content">
+                   <h3>Позвоните Нам</h3>
+                   <ul>
+                       <li><i class="fa fa-fax"></i> <?=ADRESS_JUR?></li>
+                       <li><i class="fa fa-phone"></i> <a href="<?=TELEPHONE_FREE_LINK?>"><?=TELEPHONE_FREE?></a></li>
+                       <li><i class="fa fa-envelope-o"></i> <?=EMAIL?></li>
+                       <li><i class="fa"></i></li>
+                   </ul>
+              </div>
+              <div class="contact_message content">
+                    <h3>наши реквизиты</h3>
+                    <div class="my-text-m"><?=REQUISITE?></div>
+              </div>
 
-                </div>
-            </div>
-        </div>
-    </div>
+
+
+           </div>
+           <div class="col-lg-6 col-md-12">
+             <div class="contact_message form">
+                      <!-- <h3 class="my-h3">Божественное Вмешательство</h3> -->
+                      <ul class="my_text_xs">
+                       <li>Вы можете оставить свой номер и мы сами подберем все необходимое.</br>
+                         Деталь точно подойдет на вашу модификацию.</br>
+                         Предложим качественные аналоги, и расскажем в каких случаях выгоднее брать оригинал</br>
+                       </br>
+                      </ul>
+                      </br>
+                      <form action="#" enctype='multipart/form-data' method=post>
+                          <input style="width:auto;margin:0 0 7px 0;border" type=tel name=tel required placeholder="Телефоный номер*"></input>
+                          <button type="submit">Отправить</button>
+                      </form>
+                    </br>
+
+              </div>
+             <div class="contact_message content">
+                  <h3>График работы</h3>
+                  <ul>
+                      <li><i class="fa"></i>Понедельник - Воскресенье с <b><?=WORK_FROM_DAYS?> до <?=WORK_TO_DAYS?></b></li>
+
+                      <li><i class="fa"></i></li>
+                  </ul>
+             </div>
+
+           </div>
+       </div>
+   </div>
 </div>
+
+<!--contact area end-->
 
 <!--contact area end-->
 {% endblock content %}
@@ -98,5 +90,3 @@
 <script src="https://www.google.com/jsapi"></script>
 <script src="{% static 'js/map.js' %}"></script>
 {% endblock google_map %}
-
-
