@@ -16,6 +16,19 @@ from accounts.views import login_page, register_page, guest_register_view, profi
 from django.contrib.auth.views import LogoutView
 from addresses.views import checkout_address_create_view, checkout_address_reuse_view
 from carts.views import cart_detail_api_view
+from django.contrib.sitemaps import views
+from django.contrib.sitemaps import GenericSitemap
+from product.models import AlegroGoods
+from django.utils import timezone
+from .sitemaps import ProductSitemaps, CategoriesSitemaps
+sitemaps = {
+        'categories': CategoriesSitemaps,
+        'products': ProductSitemaps,
+        }
+
+
+
+
 
 urlpatterns = [
     #path(r'^favicon.+$', RedirectView.as_view(url='/static/img/favicon-venezo.png')),
@@ -40,7 +53,8 @@ urlpatterns = [
     path('delivery/', delivery_page, name='delivery'),
     path('find/', FacetedSearchView.as_view(), name='haystack_search'),
     path('search/autocomplete/', autocomplete),
-
+    path('sitemap.xml', views.index, {'sitemaps': sitemaps}),
+    path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps }, name='django.contrib.sitemaps.views.sitemap'),
 
 
 ]

@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'haystack',
     #'product_spec',
     'product',
@@ -58,6 +60,7 @@ INSTALLED_APPS = [
     'addresses',
 ]
 
+SITE_ID = 1
 # HAYSTACK_CONNECTIONS = {
 #     'default': {
 #         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',

@@ -125,8 +125,8 @@ class AlegroGoods(models.Model):
     def __str__(self):
         return str(self.pk)
 
-    # def get_price(self):
-    #     return (int(self.price) * 18)
+    def get_absolute_url(self):
+        return reverse('detailed_id', args=[str(self.id)])
 
 
 class FeaturedProduct(models.Model):

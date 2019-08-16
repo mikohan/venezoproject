@@ -48,7 +48,7 @@
                             {% for img in img_list %}
                             {% with img|stringformat:"s" as img_name %}
                                 {% with product.pk|stringformat:"s" as img_folder %}
-                                {% with "http://cdn.venezo.ru:8008/media/"|add:img_folder|add:"/300/"|add:img_name|add:".webp" as url_check %}
+                                {% with "https://venezoimg.ru/media/"|add:img_folder|add:"/300/"|add:img_name|add:".webp" as url_check %}
 
                                 {% if url_check|check_url_exist %}
                                     <li>
@@ -84,10 +84,7 @@
                             <span class="current_price">&#x20bd; {{ object.price }}</span>
                         </div>
                         <div class="product_desc">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
-                                    tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis
-                                    justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-                                    nulla.</p>
+                            <p>{{ product.description }}</p>
                         </div>
 
                         <div class="product_variant quantity white_button">
@@ -150,7 +147,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="info" role="tabpanel">
                             <div class="product_info_content">
-                                <p>{{ product.description|safe }}</p>
+                                <p>{{ product.description_clean|safe }}</p>
                             </div>
                         </div>
                         <!--<div class="tab-pane fade" id="sheet" role="tabpanel">
@@ -275,8 +272,7 @@
                                 <!--<a class="secondary_img" href="{% url 'detailed_id' sim.pk %}"><img
                                         src="{% static 'img/product/product13.jpg' %}" alt=""></a>-->
                                 <div class="quick_button">
-                                    <a href="#" data-toggle="modal" data-target="#modal_box_{{ sim.pk }}" title="quick view"> <i
-                                            class="ion-eye"></i></a>
+                                    <a href="#" data-toggle="modal" data-target="#modal_box_{{ sim.pk }}" title="quick view"> <i                                            class="ion-eye"></i></a>
                                 </div>
                                 <div class="label_product">
                                     <span class="label_sale">-57%</span>
