@@ -82,6 +82,7 @@ def cart_update(request):
                 'removed': not added,
                 'cartItemCount' : cart_obj.products.count()
             }
+            request.session['cart_products'] = products
             return JsonResponse(json_data)
 
 

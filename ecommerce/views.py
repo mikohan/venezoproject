@@ -58,6 +58,18 @@ def about_page(request):
                }
     return render(request, 'about/about.html', context)
 
+def warraty_page(request):
+    context = {'name': 'Гарантии',
+               'page_title': 'Гарантии на запчасти',
+               }
+    return render(request, 'about/warranty.html', context)
+
+def payment_page(request):
+    context = {'name': 'Оплата',
+               'page_title': 'Способы оплаты',
+               }
+    return render(request, 'about/payment.html', context)
+
 def delivery_page(request):
     context = {'name': 'О компании',
                'page_title': 'Страница Доставка',
