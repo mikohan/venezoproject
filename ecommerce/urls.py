@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
-from .views import home_page, about_page, contact_page, delivery_page
+from .views import home_page, about_page, contact_page, delivery_page, warraty_page, payment_page
 from product.views import  autocomplete
 
 from product import urls as prod_urls
@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home'),
     path('about/', about_page, name='about'),
+    path('payment/', payment_page, name='payment'),
+    path('warranty/', warraty_page, name='warranty'),
     path('contacts/', contact_page, name='contacts'),
     path('login/', login_page, name='login'),
     path('checkout/address/create/', checkout_address_create_view, name='checkout_address_create'),

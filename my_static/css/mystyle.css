@@ -140,3 +140,28 @@
 #white_button2{
     /*color:#fff;*/
 }
+
+.order-address h3{
+    font-size: 1.2rem;
+    fong-weight: 600;
+}
+.font-12{
+    font-size: 1.2rem;
+}
+
+.success-text h1{
+    font-size: 2.0rem;
+    color: #7dd321;
+}
+.success-text p{
+    font-size:1.2rem;
+    font-weiht:700;
+}
+
+.success-video h3{
+    font-size: 1.6rem;
+}
+.success-video p{
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+}

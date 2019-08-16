@@ -20,8 +20,6 @@
     </div>
 </div>
 <!--breadcrumbs area end-->
-
-
 <!--Checkout page section-->
 <div class="Checkout_section pt-30">
     <div class="container">
@@ -68,16 +66,14 @@
                     </div>
                 </div>
                 {% else %}
-                <div class="user-actions">
+                <div class="user-actions order-address">
                     <h3>
                         <i class="fa fa-home" aria-hidden="true"></i>
                         Уже делали покупки?
-                        <a class="Returning" href="#" data-toggle="collapse" data-target="#checkout_coupon"
-                           aria-expanded="true">Кликните здесь, чтобы выбрать адрес доставки</a>
-
+                        <a class="Returning" href="#" data-toggle="collapse" data-target="#checkout_coupon"  aria-expanded="true">Кликните здесь, чтобы выбрать адрес доставки</a>
                     </h3>
-                    <div id="checkout_coupon" class="collapse" data-parent="#accordion">
-                        <div class="checkout_info">
+                    <div id="checkout_coupon" class="collapse show" data-parent="#accordion">
+                        <div class="checkout_info font-12">
                             {% if address_qs.exists %}
                             <div>
                                 {% url 'checkout_address_reuse' as checkout_address_reuse %}
@@ -87,7 +83,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="checkout_form">
