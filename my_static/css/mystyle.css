@@ -145,6 +145,10 @@
     font-size: 1.2rem;
     fong-weight: 600;
 }
+.order-address form {
+    background-color:honeydew;
+    padding: 10px;
+}
 .font-12{
     font-size: 1.2rem;
 }
