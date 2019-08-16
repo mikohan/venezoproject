@@ -1,8 +1,12 @@
 from django import forms
 from .models import Address
+from django.forms import CharField
 
 
 class AddressForm(forms.ModelForm):
+    telephone = CharField(required=True)
+    address_line = CharField(required=True)
+    city = CharField(required=True)
     class Meta:
         model = Address
 

@@ -68,8 +68,8 @@ def login_page(request):
         email = form_register.cleaned_data.get('email')
         password = form_register.cleaned_data.get('password')
         new_user = User.objects.create_user(username, email, password)
-        #print('on login page', new_user)
-        return redirect('myaccount', new_user)
+        context = {'user': new_user}
+        return render(request, 'accounts/my_account.html', context)
 
 
     return render(request, 'auth/login.html', context)
@@ -88,22 +88,23 @@ def register_page(request):
         password = form.cleaned_data.get('password')
         new_user = User.objects.create_user(username, email, password)
         #print('on register page', new_user)
-        return redirect('myaccount', new_user)
+        context = {'user': new_user}
+        return render(request, 'accounts/my_account.html', context)
 
 
     return render(request, 'auth/login.html', context)
 
-def profile_page(request, new_user=''):
+def profile_page(request):
     if request.user.is_authenticated:
         new_user = request.user
         billing_profile = BillingProfile.objects.get(user_id=new_user.pk)
         address = Address.objects.filter(billing_profile=billing_profile.pk)
         orders = Order.objects.filter(billing_profile=billing_profile.pk)
-        print(orders, 'in profile')
         context = {'user': new_user,
                     'address': address,
                     'orders': orders,
                 }
         return render(request, 'accounts/my_account.html', context)
-    print(new_user, 'in profile')
+
+    context = {'user': request.user}
     return render(request, 'accounts/my_account.html', context)
