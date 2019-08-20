@@ -10,7 +10,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path('', FacetedListCat.as_view(), name='products'),
+    path('', FacetedListCat.as_view(), name='spec'),
     path('subcat/<slug:slug>/', FacetedListSubCat.as_view(), name='subcat'),
     path('last/<slug:slug>/', FacetedListSubSubCatLast.as_view(), name='last'),
     path('cat/<slug:slug>/', FacetedListSubSubCat.as_view(), name='subsubcat'),
