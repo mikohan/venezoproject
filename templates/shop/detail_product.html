@@ -96,7 +96,7 @@
                         </div>
                         <div class=" product_d_action">
                             <ul>
-                                <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_callback">
                                   Оставить заявку
                                 </button>
                                 </li>
@@ -312,7 +312,7 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="modal_box_call" tabindex="-1" role="dialog" aria-labelledby="modal_box_call_label" aria-hidden="true">
+<div class="modal fade" id="modal_callback" tabindex="-1" role="dialog" aria-labelledby="modal_box_call_label" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
@@ -321,12 +321,9 @@
       </button>
       <div class="modal-body">
         <h5 class="modal-title" id="modal_box_call_label">Оставьте свой номер</h5>
-
         <form action="/mail.php" method="post" class="form-horizontal">
            <div class="form-group">
               <label for="name" control-label>Имя</label>
-
-
               <div>
                  <input type="text" class="form-control" name="name" placeholder="Имя">
               </div>
@@ -338,7 +335,7 @@
               </div>
            </div>
            <div class="form-group">
-             <label for="message-text" class="col-form-label"></label>
+             <label for="message-text" class="col-form-label">Задайте вопрос</label>
              <textarea class="form-control" id="message-text"></textarea>
           </div>
            <div class="form-group">
@@ -348,9 +345,6 @@
               </div>
            </div>
         </form>
-
-
-
       </div>
     </div>
   </div>
