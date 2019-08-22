@@ -96,7 +96,7 @@
                         </div>
                         <div class=" product_d_action">
                             <ul>
-                                <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_callback">
                                   Оставить заявку
                                 </button>
                                 </li>
@@ -312,62 +312,42 @@
     </div>
 </div>
 <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Оставьте свой номер и мы перезвоним Вам</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+<div class="modal fade" id="modal_callback" tabindex="-1" role="dialog" aria-labelledby="modal_box_call_label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
 
-
-
-          <form action="/mail.php" method="post" class="form-horizontal">
-             <div class="form-group">
-                <label for="name" control-label">Имя</label>
-                <div>
-                   <input type="hidden" class="form-control" id="url" name="url">
-                </div>
-                <div>
-                   <input type="hidden" class="form-control" id="id" name="id">
-                </div>
-                <div>
-                   <input type="hidden" class="form-control" id="product_name" name="product_name">
-                </div>
-                <div>
-                   <input type="hidden" class="form-control" id="car" name="car">
-                </div>
-                <div>
-                   <input type="text" class="form-control" id="name" name="name" placeholder="Имя">
-                </div>
-             </div>
-             <div class="form-group">
-                <label for="phone">Телефон</label>
-                <div>
-                   <input type="text" class="form-control" id="phone" name="phone" placeholder="Телефон" required>
-                </div>
-             </div>
-             <div class="form-group">
-               <label for="message-text" class="col-form-label">Message:</label>
-               <textarea class="form-control" id="message-text"></textarea>
-            </div>
-             <div class="form-group">
-                <div">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                   <button type="submit" class="btn btn-primary">Отправить</button>
-                </div>
-             </div>
-          </form>
-
-
-
-        </div>
-        <div class="modal-footer">
-        </div>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body">
+        <h5 class="modal-title" id="modal_box_call_label">Оставьте свой номер</h5>
+        <form action="/mail.php" method="post" class="form-horizontal">
+           <div class="form-group">
+              <label for="name" control-label>Имя</label>
+              <div>
+                 <input type="text" class="form-control" name="name" placeholder="Имя">
+              </div>
+           </div>
+           <div class="form-group">
+              <label for="phone">Телефон</label>
+              <div>
+                 <input type="text" class="form-control" id="phone" name="phone" placeholder="Телефон" required>
+              </div>
+           </div>
+           <div class="form-group">
+             <label for="message-text" class="col-form-label">Задайте вопрос</label>
+             <textarea class="form-control" id="message-text"></textarea>
+          </div>
+           <div class="form-group">
+              <div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                 <button type="submit" class="btn btn-primary">Отправить</button>
+              </div>
+           </div>
+        </form>
       </div>
     </div>
+  </div>
+</div>
 <!--product area end-->
 {% endblock %}
