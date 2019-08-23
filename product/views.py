@@ -56,7 +56,7 @@ class ProductDetailView(DetailView):
         context['brad_cat_slug'] = pred_last_crumb.slug
         context['brad_subcat_name'] = brad_obj.rus_name
         context['brad_subcat_slug'] = brad_obj.slug
-        context['similar'] = SearchQuerySet().autocomplete(content_auto=context['product'].name[:4])[:20]
+        context['similar'] = SearchQuerySet().filter(name=context['product'].name[:4])[:20]
         context['previous'] = context['similar'][randrange(len(context['similar']))]
         context['next'] = context['similar'][randrange(len(context['similar']))]
         context['cart'] = cart_obj
