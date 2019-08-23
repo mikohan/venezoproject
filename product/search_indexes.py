@@ -24,11 +24,13 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
     fuel                    = indexes.CharField(model_attr='fuel', null=True, faceted=True)
     value                   = indexes.CharField(model_attr='value', null=True, faceted=True)
     cat_id                  = indexes.IntegerField(model_attr='cat_id__id')
+    subsubcat_id            = indexes.TextField(model_attr='subsubcat_id', null=True)
 
 
 
     # for auto complete
-    content_auto = indexes.EdgeNgramField(model_attr='name')
+    #content_auto = indexes.EdgeNgramField(model_attr='name')
+    content_auto = indexes.CharField(model_attr='cat_id__rus_name')
 
     # Spelling suggestions
     suggestions = indexes.FacetCharField()
