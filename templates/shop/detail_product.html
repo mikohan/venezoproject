@@ -30,17 +30,9 @@
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="product-details-tab">
-
                     <div id="img-1" class="zoomWrapper single-zoom">
-                        {# if not product.title|check_image_exist:product.pk #}
-                        <!--<a href="#">
-                            <img id="zoom1" src="{% static 'img/prod_imgs/girl.jpg' %}"
-                                 data-zoom-image="{% static 'img/prod_imgs/girl.jpg' %}" alt="big-1">
-                        </a>-->
-                        {# else #}
                         <img id="zoom1" src="{{ CDN_SERVER }}/media/{{ product.pk }}/600/0.webp"
                                  data-zoom-image="{{ CDN_SERVER }}/media/{{ product.pk }}/600/0.webp">
-                        {# endif #}
                     </div>
 
                     <div class="single-zoom-thumb">
@@ -84,9 +76,13 @@
                             <span class="current_price">&#x20bd; {{ object.price }}</span>
                         </div>
                         <div class="product_desc">
-                            <p>{{ product.description }}</p>
+                            <p>Склад: Польша</p>
+                            <p>Срок доставки от 7 дней</p>
                         </div>
 
+                        <div class="product_desc">
+                            <p>{{ product.subsubcat_id|truncatechars:300}}</p>
+                        </div>
                         <div class="product_variant quantity white_button">
 
                              {% include "shop/snippets/update_cart.html"  with form=form product=object cart=cart %}
