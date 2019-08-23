@@ -30,7 +30,7 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
 
     # for auto complete
     #content_auto = indexes.EdgeNgramField(model_attr='name')
-    content_auto = indexes.CharField(model_attr='cat_id__rus_name')
+    content_auto = indexes.EdgeNgramField(model_attr='cat_id__rus_name')
 
     # Spelling suggestions
     suggestions = indexes.FacetCharField()
