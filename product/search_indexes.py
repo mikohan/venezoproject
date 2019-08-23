@@ -24,7 +24,7 @@ class ProductIndex(indexes.SearchIndex, indexes.Indexable):
     fuel                    = indexes.CharField(model_attr='fuel', null=True, faceted=True)
     value                   = indexes.CharField(model_attr='value', null=True, faceted=True)
     cat_id                  = indexes.IntegerField(model_attr='cat_id__id')
-    subsubcat_id            = indexes.TextField(model_attr='subsubcat_id', null=True)
+    subsubcat_id            = indexes.CharField(model_attr='subsubcat_id', null=True)
 
 
 
