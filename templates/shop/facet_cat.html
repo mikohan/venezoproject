@@ -261,7 +261,7 @@
                                         <span class="current_price">&#x20bd; {{ product.object.price }}</span>
                                     </div>
                                     <div class="product_desc">
-                                        <p>{{ product.subsubcat_id|truncatechars:500 }}</p>
+                                        <p>{{ product.subsubcat_id|truncatechars:200|capfirst }}</p>
                                     </div>
                                 </div>
                                 <div class="right_caption">

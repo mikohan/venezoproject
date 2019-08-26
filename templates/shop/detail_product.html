@@ -81,7 +81,7 @@
                         </div>
 
                         <div class="product_desc">
-                            <p>{{ product.subsubcat_id|truncatechars:300}}</p>
+                            <p>{{ product.subsubcat_id|truncatechars:300|capfirst }}</p>
                         </div>
                         <div class="product_variant quantity white_button">
 
@@ -93,7 +93,7 @@
                         <div class=" product_d_action">
                             <ul>
                                 <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_callback">
-                                  Оставить заявку
+                                  Заказать звонок
                                 </button>
                                 </li>
                                 <li><a href="#" title="Add to wishlist">+ Добавить в блокнот</a></li>
@@ -147,7 +147,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="info" role="tabpanel">
                             <div class="product_info_content">
-                                <p>{{ product.subsubcat_id }}</p>
+                                <p>{{ product.subsubcat_id|capfirst }}</p>
                             </div>
                         </div>
                         <!--<div class="tab-pane fade" id="sheet" role="tabpanel">
@@ -317,7 +317,7 @@
       </button>
       <div class="modal-body">
         <h5 class="modal-title" id="modal_box_call_label">Оставьте свой номер</h5>
-        <form action="/mail.php" method="post" class="form-horizontal">
+        <form action="{% url 'send_mail' %}" method="post" class="form-horizontal">{% csrf_token %}
            <div class="form-group">
               <label for="name" control-label>Имя</label>
               <div>
@@ -325,14 +325,14 @@
               </div>
            </div>
            <div class="form-group">
-              <label for="phone">Телефон</label>
+              <label for="tel">Телефон</label>
               <div>
-                 <input type="text" class="form-control" id="phone" name="phone" placeholder="Телефон" required>
+                 <input type="text" class="form-control" id="phone" name="tel" placeholder="Телефон" required>
               </div>
            </div>
            <div class="form-group">
              <label for="message-text" class="col-form-label">Задайте вопрос</label>
-             <textarea class="form-control" id="message-text"></textarea>
+             <textarea class="form-control" id="message-text" name="question"></textarea>
           </div>
            <div class="form-group">
               <div>

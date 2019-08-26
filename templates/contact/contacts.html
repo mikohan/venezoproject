@@ -52,7 +52,7 @@
                      Мы находимся в Европе, но у нас есть представительство в Москве которое занимается обработкой заказов и перенаправляет их на нас.</b></br>
                    </br>
                   </ul>
-                  <form action="#" enctype='multipart/form-data' method=post>
+                  <form action="{% url 'send_mail' %}" enctype='multipart/form-data' method=post>{% csrf_token %}
                       <input style="width:auto;margin:0 0 7px 0;border" type=tel name=tel required placeholder="Телефоный номер*"></input>
                       <button type="submit">Отправить</button>
                   </form>
