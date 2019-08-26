@@ -6,7 +6,7 @@ from product.models import CatSubRus, AlegroGoods, SuperCat, FeaturedProduct
 from blog.models import BlogModel
 from carts.models import Cart
 from django.conf import settings
-
+from django.core.mail import send_mail
 def home_page(request):
     qs = CatSubRus.objects.filter(parent_id=0)
     select_cars = FeaturedProduct.objects.filter(on_main=1).select_related('product_id').all()
@@ -71,7 +71,7 @@ def payment_page(request):
     return render(request, 'about/payment.html', context)
 
 
-def send_mail(request):
+def send_mail_to(request):
     email = request.POST.get('email')
     tel = request.POST.get('tel')
     context = {'email': email,
@@ -81,7 +81,7 @@ def send_mail(request):
         send_mail("Запрос отправлен!", "Менеджер свяжется с Вами в ближайшие рабочие часы.",\
                settings.SHOP_EMAIL,
                [email, settings.SHOP_EMAIL],
-               fail_silently=False,
+               fail_silently=False
                 )
     return render(request, 'shop/success.html', context)
 

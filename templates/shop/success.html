@@ -28,7 +28,11 @@
         <div class="row align-items-center">
             <div class="col-12">
                 <div class="about_content success-text">
+                    {% if tel %}
+                    <h1 >Запрос отправлен! Ждите звонка.</h1>
+                    {% else %}
                     <h1 >Заказ успешно оформлен!</h1>
+                    {% endif %}
                     <p>Менеджер свяжется с Вами в ближайшее время для уточнения деталей заказа.</p>
                     <!--<span>“There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.”</span>-->
                 </div>
