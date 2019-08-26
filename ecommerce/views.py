@@ -78,7 +78,7 @@ def send_mail_to(request):
                'tel': tel,
                }
     if request.method == "POST":
-        send_mail("Запрос отправлен!", "Менеджер свяжется с Вами в ближайшие рабочие часы.",\
+        send_mail("Запрос отправлен!", "Менеджер свяжется с Вами в ближайшие рабочие часы.Телефон - {}".format(tel),
                settings.SHOP_EMAIL,
                [email, settings.SHOP_EMAIL],
                fail_silently=False
