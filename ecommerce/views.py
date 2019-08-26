@@ -70,6 +70,21 @@ def payment_page(request):
                }
     return render(request, 'about/payment.html', context)
 
+
+def send_mail(request):
+    email = request.POST.get('email')
+    tel = request.POST.get('tel')
+    context = {'email': email,
+               'tel': tel,
+               }
+    if request.method == "POST":
+        send_mail("Запрос отправлен!", "Менеджер свяжется с Вами в ближайшие рабочие часы.",\
+               settings.SHOP_EMAIL,
+               [email, settings.SHOP_EMAIL],
+               fail_silently=False,
+                )
+    return render(request, 'shop/success.html', context)
+
 def delivery_page(request):
     context = {'name': 'О компании',
                'page_title': 'Страница Доставка',

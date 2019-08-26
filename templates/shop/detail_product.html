@@ -81,7 +81,7 @@
                         </div>
 
                         <div class="product_desc">
-                            <p>{{ product.subsubcat_id|truncatechars:300}}</p>
+                            <p>{{ product.subsubcat_id|truncatechars:300|capfirst }}</p>
                         </div>
                         <div class="product_variant quantity white_button">
 
@@ -147,7 +147,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="info" role="tabpanel">
                             <div class="product_info_content">
-                                <p>{{ product.subsubcat_id }}</p>
+                                <p>{{ product.subsubcat_id|capfirst }}</p>
                             </div>
                         </div>
                         <!--<div class="tab-pane fade" id="sheet" role="tabpanel">
