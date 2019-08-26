@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.views.generic import TemplateView
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -57,6 +58,7 @@ urlpatterns = [
     path('sitemap.xml', views.index, {'sitemaps': sitemaps}),
     path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps }, name='django.contrib.sitemaps.views.sitemap'),
     path('sendmail/', send_mail_to, name='send_mail'),
+    path('robots.txt', TemplateView.as_view(template_name='base/robots.txt', content_type='text/plain')),
 
 
 ]
