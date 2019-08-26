@@ -10,7 +10,7 @@
                             <a href="#"><img src="{% static 'img/logo/logo-2.png' %}" alt=""></a>
                         </div>
                         <div class="footer_contact">
-                            
+
                             <ul>
                                 <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -21,6 +21,12 @@
                             </ul>
 
                         </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="widgets_container widget_menu">
+
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
@@ -32,26 +38,42 @@
                                 <li><a href="/delivery/">Доставка</a></li>
                                 <li><a href="/warranty/">Гарантии</a></li>
                                 <li><a href="/payment/">Оплата</a></li>
+                                <li><a href="/blog/">Блог</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <div class="widgets_container widget_menu">
-                        <h3>My Account</h3>
+                        <h3>Мой Аккаунт</h3>
                         <div class="footer_menu">
                             <ul>
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="#">Order History</a></li>
-                                <li><a href="wishlist.html">Wish List</a></li>
-                                <li><a href="#">Newsletter</a></li>
-                                <li><a href="#">Affiliate</a></li>
-                                <li><a href="faq.html">Specials</a></li>
+                              <li><a href="{% url 'login' %}">Войти </a></li>
+                              <li><a href="{% url 'carts:checkout' %}">Оформить заказ </a></li>
+                              <li><a href="{% url 'myaccount' %}">Мой Аккаунт </a></li>
+                              <li><a href="{{ cart_url }}">Корзина</a></li>
+                              <li><a href="wishlist.html">Избранное</a></li>
+                              <li><a href="{% url 'logout' %}">Выйти </a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
+                    <div class="widgets_container widget_menu">
+                        <h3>категории</h3>
+                        <div class="footer_menu">
+                            <ul>
+                                <li><a href="/products/cat/kuzovnye/">Кузовные детали</a></li>
+                                <li><a href="/products/cat/toplivnaja-sistema/">Топливная система</a></li>
+                                <li><a href="/products/cat/tormoznaja-sistema/">Тормоза</a></li>
+                                <li><a href="/products/cat/dvigateli-i-aksessuary/">Двигатель</a></li>
+                                <li><a href="/products/?q=null&cond=Б%2FУ">Б/У запчасти</a></li>
+                                <li><a href="/products/cat/filtry-afmcv/">Расходники</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-2 col-md-4">
                     <div class="widgets_container widget_menu">
                         <h3>Extras</h3>
                         <div class="footer_menu">
@@ -65,8 +87,8 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-4">
+                </div> -->
+                <!-- <div class="col-lg-2 col-md-4">
                     <div class="widgets_container widget_menu">
                         <h3>Customer Service</h3>
                         <div class="footer_menu">
@@ -79,10 +101,10 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
-        <div class="newletter_area">
+        <!-- <div class="newletter_area">
             <div class="row">
                 <div class="col-lg-5 col-md-5">
                     <div class="newletter_title">
@@ -102,12 +124,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="footer_bottom">
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="copyright_area">
-                        <p>Copyright &copy; 2019 <a href="#">Venezo</a> All Right Reserved.</p>
+                        <p>Copyright &copy; 2019 <a href="#">Venezo</a>Все права защищены</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">

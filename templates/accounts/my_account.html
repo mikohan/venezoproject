@@ -57,7 +57,7 @@
                                         <th>Дата</th>
                                         <th>Статус</th>
                                         <th>Сумма</th>
-                                        <th>Посмотреть</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -65,9 +65,9 @@
                                     <tr>
                                         <td>{{ order.order_id }}</td>
                                         <td>{{ order.date }}</td>
-                                        <td><span class="success">Completed</span></td>
+                                        <td><span class="success">Выполнено</span></td>
                                         <td>{{ order.total }}</td>
-                                        <td><a href="{% url 'carts:viewcart' order.cart_id %}" class="view">view</a></td>
+                                        <td><a href="{% url 'carts:viewcart' order.cart_id %}" class="view">Посмотреть</a></td>
                                     </tr>
                                     {% endfor %}
                                     </tbody>
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="downloads">
-                            <h3>Downloads</h3>
+                            <h3>Загрузки</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="tab-pane" id="address">
                             <h3 class="billing_address">Мои адреса доставки</h3>
-                            <a href="#" class="view">Edit</a>
+                            <a href="#" class="view">Изменить</a>
                             <p><strong>{{ user.username }} {{ user.first_name }} {{ user.last_name }}</strong></p>
                             {% for adr in address %}
                             <address>
@@ -117,7 +117,7 @@
                             {% endfor %}
                         </div>
                         <div class="tab-pane fade" id="account-details">
-                            <h3>Account details </h3>
+                            <h3>Детали аккаунта</h3>
                             <div class="login">
                                 <div class="login_form_container">
                                     <div class="account_login_form">
@@ -130,15 +130,15 @@
                                                                                   name="id_gender"> Mrs.</span>
                                             </div>
                                             <br>
-                                            <label>First Name</label>
+                                            <label>Имя</label>
                                             <input type="text" name="first-name">
-                                            <label>Last Name</label>
+                                            <label>Фамилия</label>
                                             <input type="text" name="last-name">
-                                            <label>Email</label>
+                                            <label>Почта</label>
                                             <input type="text" name="email-name">
-                                            <label>Password</label>
+                                            <label>Пароль</label>
                                             <input type="password" name="user-password">
-                                            <label>Birthdate</label>
+                                            <label>Дата рождения</label>
                                             <input type="text" placeholder="MM/DD/YYYY" value="" name="birthday">
                                             <span class="example">
                                                   (E.g.: 05/31/1970)
