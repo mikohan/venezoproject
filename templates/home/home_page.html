@@ -18,34 +18,34 @@
                                 <nav class="categories_menu_toggle">
                                     <ul>
 
-                                        <li class="menu_item_children"><a href="shop.html">
+                                        <li class="menu_item_children"><a href="{% url 'products' %}">
                                                <img src="{% static 'img/icon/menu1.png' %}" alt="">
                                                 <span> Легковые и Грузвоые </span>
                                             </a>
                                         </li>
-                                        <li class="menu_item_children"><a href="shop.html">
+                                        <li class="menu_item_children"><a href="/products/last/komplektnye-dvigateli-xsscg/">
                                                <img src="{% static 'img/icon/menu2.png' %}" alt="">
-                                                <span> Спецтехника </span>
+                                                <span> Двигатели </span>
                                             </a>
                                         </li>
-                                        <li class="menu_item_children"><a href="shop.html">
+                                        <li class="menu_item_children"><a href="/products/?q=null&cond=Б%2FУ">
                                                <img src="{% static 'img/icon/menu3.png' %}" alt="">
-                                                <span> Мотоциклы </span>
+                                                <span> БУ Запчасти </span>
                                            </a>
                                         </li>
-                                        <li><a href="shop.html">
+                                        <li><a href="/products/cat/kuzovnye/">
                                                 <img src="{% static 'img/icon/menu4.png' %}" alt="">
-                                                <span> Трактора </span>
+                                                <span> Кузовные </span>
                                             </a>
                                         </li>
-                                        <li><a href="shop.html">
+                                        <li><a href="/products/cat/filtry-afmcv/">
                                                <img src="{% static 'img/icon/menu5.png' %}" alt="">
-                                                <span> Комбайны</span>
+                                                <span> Фильтры</span>
                                            </a>
                                         </li>
-                                        <li><a href="shop.html">
+                                        <li><a href="/products/cat/toplivnaja-sistema/">
                                                 <img src="{% static 'img/icon/menu6.png' %}" alt="">
-                                                <span> Двигатели</span>
+                                                <span> Топливная система</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -146,12 +146,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="single_banner">
-                        <a href="#"><img src="{% static 'img/main_page/truck_parts_543x168.jpg' %}" alt="Запчасти для грузовых автомобилей"></a></a>
+                        <a href="{% url 'products' %}"><img src="{% static 'img/main_page/truck_parts_543x168.jpg' %}" alt="Запчасти для грузовых автомобилей"></a></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="single_banner b_right">
-                        <a href="#"><img src="{% static 'img/main_page/special_machines.jpg' %}" alt=""></a>
+                        <a href="{% url 'products' %}"><img src="{% static 'img/main_page/special_machines.jpg' %}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
                                             <div class="product_thumb">
                                                 <a class="primary_img" href="{% url 'detailed_id' best.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ best.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ best.product_id.name }}"></a>
                                                 <div class="quick_button">
-                                                    <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                    <a href="#" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                 </div>
                                                 <div class="label_product">
                                                     <span class="label_sale">-47%</span>
@@ -318,7 +318,7 @@
                                                     <div class="product_thumb">
                                                         <a class="primary_img" href="{% url 'detailed_id' car.product_id %}"><img src="{{  CDN_SERVER }}/media/{{ car.product_id }}/300/0.webp" alt="{{ car.name }}" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';"></a>
                                                         <div class="quick_button">
-                                                            <a href="{% url 'detailed_id' car.product_id %}" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                            <a href="{% url 'detailed_id' car.product_id %}" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                         </div>
                                                         <div class="label_product">
                                                             <span class="label_sale">-57%</span>
@@ -354,7 +354,7 @@
                                                     <div class="product_thumb">
                                                         <a class="primary_img" href="{% url 'detailed_id' car2.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ car2.product_id }}/300/0.webp" alt="{{ car2.name }}" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';"></a>
                                                         <div class="quick_button">
-                                                            <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                            <a href="#" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                         </div>
                                                         <div class="label_product">
                                                             <span class="label_sale">-57%</span>
@@ -390,7 +390,7 @@
                                                     <div class="product_thumb">
                                                         <a class="primary_img" href="{% url 'detailed_id' car3.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ car3.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ car3.name }}"></a>
                                                         <div class="quick_button">
-                                                            <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                            <a href="#" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                         </div>
                                                         <div class="label_product">
                                                             <span class="label_sale">-57%</span>
@@ -461,7 +461,7 @@
                                                         <div class="product_thumb">
                                                             <a class="primary_img" href="{% url 'detailed_id' construct.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ construct.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ construct.product_id.name }}"></a>
                                                             <div class="quick_button">
-                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                                <a href="#" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                             </div>
                                                             <div class="label_product">
                                                                 <span class="label_sale">-57%</span>
@@ -496,7 +496,7 @@
                                                         <div class="product_thumb">
                                                             <a class="primary_img" href="{% url 'detailed_id' construct2.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ construct2.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ construct2.product_id.name }}"></a>
                                                             <div class="quick_button">
-                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                                <a href="#" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                             </div>
                                                             <div class="label_product">
                                                                 <span class="label_sale">-57%</span>
@@ -531,7 +531,7 @@
                                                         <div class="product_thumb">
                                                             <a class="primary_img" href="{% url 'detailed_id' construct3.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ construct3.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ construct3.product_id.name }}"></a>
                                                             <div class="quick_button">
-                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                                <a href="#" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                             </div>
                                                             <div class="label_product">
                                                                 <span class="label_sale">-57%</span>
@@ -595,7 +595,7 @@
                                                         <div class="product_thumb">
                                                             <a class="primary_img" href="{% url 'detailed_id' misc.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ misc.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ misc.product_id.name }}"></a>
                                                             <div class="quick_button">
-                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                                <a href="#" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                             </div>
                                                             <div class="label_product">
                                                                 <span class="label_sale">-57%</span>
@@ -630,7 +630,7 @@
                                                         <div class="product_thumb">
                                                             <a class="primary_img" href="{% url 'detailed_id' misc2.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ misc2.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ misc2.product_id.name }}"></a>
                                                             <div class="quick_button">
-                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                                <a href="#" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                             </div>
                                                             <div class="label_product">
                                                                 <span class="label_sale">-57%</span>
@@ -665,7 +665,7 @@
                                                         <div class="product_thumb">
                                                             <a class="primary_img" href="{% url 'detailed_id' misc3.product_id %}"><img src="{{ CDN_SERVER }}/media/{{ misc3.product_id }}/300/0.webp" onerror="this.onerror=null;this.src='{{ CDN_SERVER }}/media/default/300/default.png';" alt="{{ misc3.product_id.name }}"></a>
                                                             <div class="quick_button">
-                                                                <a href="#" data-toggle="modal" data-target="#modal_box"  title="quick view"> <i class="ion-eye"></i></a>
+                                                                <a href="#" data-toggle="modal" data-target="#modal_boxXXX"  title="quick view"> <i class="ion-eye"></i></a>
                                                             </div>
                                                             <div class="label_product">
                                                                 <span class="label_sale">-57%</span>
